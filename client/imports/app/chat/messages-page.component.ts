@@ -24,6 +24,7 @@ import style from './messages-page.component.scss';
 export class MessagesPage implements OnInit, OnDestroy {
   private selectedChat: Chat;
   private title: string;
+  private subtitle: string;
   private messages: Observable<Message[]>;
   private senderId: string;
   private message = '';
@@ -43,7 +44,9 @@ export class MessagesPage implements OnInit, OnDestroy {
 
     //stop-gap solution; should just pass in the user name (likely as a route parameter) rather than search again
     const receiver = Meteor.users.findOne(this.selectedChat.memberIds.find(memberId => memberId !== this.senderId));
-    this.title = receiver.profile.displayname;
+    const topic = this.selectedChat.topic;
+    this.title = receiver.profile.displayname + ' - "' + topic.type + ": " + topic.department + " " + topic.courseNumber + '"';
+
   }
 
   ngOnInit() {

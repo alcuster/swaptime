@@ -18,6 +18,7 @@ export class Times {
         this.times.push({label: '12:30-1:20', value: '12:30 pm-12:20 pm'});
         this.times.push({label: '1:30-2:20', value: '01:30 pm-02:20 pm'});
         this.times.push({label: '1:30-4:20', value: '01:30 pm-04:20 pm'});
+        this.times.push({label: '1:40-4:20', value: '01:40 pm-04:20 pm'});
         this.times.push({label: '1:40-2:55', value: '01:40 pm-02:55 pm'});
 
     }

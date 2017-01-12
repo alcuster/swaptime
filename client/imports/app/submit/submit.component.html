@@ -24,6 +24,9 @@
   <form [formGroup]="addForm" (ngSubmit)="submitListing()">
     <md-card class="app-input-section">
       <md-input placeholder="Course Title" name="fulltitle" formControlName="fullTitle" style="width: 100%"></md-input>
+
+      <a *ngIf="davidsonLink" target="_blank" [href]="davidsonLink">Course info (www.davidson.edu)</a>
+
       <p>Department:</p>
       <p-dropdown [options]="this.departments" formControlName="department" [style]="{'width':'80%'}"></p-dropdown>
       <md-input placeholder="Course Number" maxlength="3" formControlName="courseNumber" style="width: 100%"></md-input>

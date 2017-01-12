@@ -32,6 +32,7 @@ export class SubmitComponent implements OnInit {
   private addForm: FormGroup;
   private dataAvailable: boolean = false;
   private errorMessage: string;
+  private davidsonLink: string;
 
   constructor(private courseService: CourseService,
               private router: Router,
@@ -92,6 +93,7 @@ export class SubmitComponent implements OnInit {
                            type: '',
                            description: ''
                          });
+    this.davidsonLink = 'https://www.davidson.edu/general-course-detail/?subj=' + value.subj + '&cnum=' + value.cnum;
   }
 
   submitListing(): void {

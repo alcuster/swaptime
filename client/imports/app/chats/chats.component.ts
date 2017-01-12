@@ -7,6 +7,8 @@ import * as moment from 'moment';
 import template from './chats.component.html';
 import style from "./chats.component.scss";
 //import {InjectUser} from 'angular2-meteor-accounts-ui';
+import { TruncatePipe } from '../shared/truncate.pipe';
+
 import {Chats} from "../../../../both/collections/chats.collection";
 import {Message} from "../../../../both/models/message.model";
 import {Messages} from "../../../../both/collections/messages.collection";
@@ -32,7 +34,11 @@ export class ChatsComponent implements OnInit {
     MeteorObservable.subscribe('chats').subscribe(() => {
       MeteorObservable.autorun().subscribe(() => {
         this.chats = Chats
-          .find({})
+          .find({}, {
+            sort: {
+              createdAt: -1
+            }
+          })
           .mergeMap(chats =>
             Observable.combineLatest(
               ...chats.map(chat =>
@@ -52,7 +58,6 @@ export class ChatsComponent implements OnInit {
           ).map(chats => {
           chats.forEach(chat => {
               //const receiver = Meteor.users.findOne(chat.memberIds.find(memberId => memberId !== this.senderId))
-              //console.log('hi from the other side');
               //chat.title = receiver.profile.displayname;
             });
 

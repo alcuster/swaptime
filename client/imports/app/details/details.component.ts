@@ -53,7 +53,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
       return;
     }
 
-    MeteorObservable.call('addChat', recipient).subscribe({
+    MeteorObservable.call('addChat', recipient, this.listing).subscribe({
       next: () => {
         this.router.navigate(['/messages']);
       },

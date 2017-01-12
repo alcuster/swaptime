@@ -7,11 +7,14 @@
   </md-toolbar>
   <div class="app-content">
     <md-card *ngFor="let chat of chats | async" [routerLink]="['/chat', chat._id]">
+      <md-card-subtitle *ngIf="chat.lastMessage">
+        <span class="last-message-timestamp">{{chat.lastMessage.createdAt | amCalendar}}</span>
+      </md-card-subtitle>
       <div class="chat-info">
-        <h2 class="chat-title">{{chat.title}}</h2>
+        <h2>{{chat.topic.type}}: {{ chat.topic.department }} {{ chat.topic.courseNumber }}</h2>
+        <h4>{{chat.title}}</h4>
         <span *ngIf="chat.lastMessage" class="last-message">
-          <p class="last-message-content">{{chat.lastMessage.content}}</p>
-          <span class="last-message-timestamp">{{chat.lastMessage.createdAt | amCalendar}}</span>
+          <p class="last-message-content">{{chat.lastMessage.content | truncate:20}}</p>
         </span>
       </div>
     </md-card>
