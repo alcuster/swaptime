@@ -1,0 +1,23 @@
+<div class="app-content">
+  <md-toolbar color="primary">
+    <button *xs class="app-icon-button" (click)="toggle()">
+      <i class="material-icons app-toolbar-menu">menu</i>
+    </button>
+    <span [routerLink]="['/listings']">All Trades</span>
+  </md-toolbar>
+  <div *ngIf="!user">
+    <a md-button [routerLink]="['/login']" >Login</a>
+    <a md-button [routerLink]="['/signup']">Sign up</a>
+  </div>
+  <div *ngIf="user">
+    <a md-button [routerLink]="['/mylistings']">Logged in as: {{ user | displayName }}</a>
+    <button md-button (click)="logout()">Logout</button>
+  </div>
+  <app-course
+    *ngFor="let i of data | async"
+    [listing]="i">
+  </app-course>
+</div>
+<span class="app-action">
+  <button md-fab [routerLink]="['/submit']"><md-icon>add</md-icon></button>
+</span>

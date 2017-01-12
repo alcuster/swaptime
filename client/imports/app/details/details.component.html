@@ -1,0 +1,21 @@
+<div class="app-content">
+  <div *ngIf="listing">
+    <md-toolbar color="primary">
+      <button class="app-icon-button" [routerLink]="['/listings']">
+        <i class="material-icons app-toolbar-menu">arrow_back</i>
+      </button>
+      <span>Listing details - "{{listing.type}}: {{ listing.department }} {{ listing.courseNumber }}"</span>
+    </md-toolbar>
+
+    <md-card>
+      <md-card-title>{{listing.type}}: {{ listing.department }} {{ listing.courseNumber }} {{listing.section}}</md-card-title>
+      <h5>Course title: {{ listing.fullTitle }}</h5>
+      <h5>Time/days: {{ listing.days }} {{ listing.time }}</h5>
+      <h5>Listing description:</h5>
+      <p>{{ listing.description }}</p>
+    </md-card>
+    <button *ngIf="!isOwner(listing)" md-raised-button (click)="addChat(listing.owner)" color="primary">CONTACT</button>
+    <button *ngIf="isOwner(listing)" md-raised-button (click)="deleteListing()" [routerLink]="['/listings']">DELETE</button>
+
+  </div>
+</div>

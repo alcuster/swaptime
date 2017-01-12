@@ -1,0 +1,57 @@
+<div class="app-content">
+<md-toolbar color="primary">
+  <button class="app-icon-button" [routerLink]="['/listings']">
+    <i class="material-icons app-toolbar-menu">arrow_back</i>
+  </button>
+  <span>Submit a listing</span>
+</md-toolbar>
+
+  <md-card>
+    <div *ngIf="dataAvailable">
+      <md-card-title>
+        Search by course title:
+      </md-card-title>
+      <p-autoComplete [(ngModel)]="course" [suggestions]="filteredCourses" (completeMethod)="filterCourses($event)" (onSelect)="handleSelect($event)" field="sectionTitle" [style]="{'width':'50%'}"></p-autoComplete>
+    </div>
+    <div *ngIf="!dataAvailable">
+      <p>Loading search...</p>
+    </div>
+    <div *ngIf="errorMessage">
+      <p>Please log in to use the search function.</p>
+    </div>
+  </md-card>
+
+  <form [formGroup]="addForm" (ngSubmit)="submitListing()">
+    <md-card class="app-input-section">
+      <md-input placeholder="Course Title" name="fulltitle" formControlName="fullTitle" style="width: 100%"></md-input>
+      <p>Department:</p>
+      <p-dropdown [options]="this.departments" formControlName="department" [style]="{'width':'80%'}"></p-dropdown>
+      <md-input placeholder="Course Number" maxlength="3" formControlName="courseNumber" style="width: 100%"></md-input>
+
+      <p>Days: </p>
+      <p-radioButton name="daysgroup" value="M" label="M" formControlName="days"></p-radioButton>
+      <p-radioButton name="daysgroup" value="T" label="T" formControlName="days"></p-radioButton>
+      <p-radioButton name="daysgroup" value="W" label="W" formControlName="days"></p-radioButton>
+      <p-radioButton name="daysgroup" value="R" label="R" formControlName="days"></p-radioButton>
+      <p-radioButton name="daysgroup" value="F" label="F" formControlName="days"></p-radioButton>
+      <p-radioButton name="daysgroup" value="MWF" label="MWF" formControlName="days"></p-radioButton>
+      <p-radioButton name="daysgroup" value="TR" label="TR" formControlName="days"></p-radioButton>
+
+      <p>Time: </p>
+      <p-dropdown [options]="this.times" formControlName="time" [style]="{'width':'80%'}"></p-dropdown>
+      <md-input placeholder="Section (leave empty if none)" name="section" formControlName="section" style="width: 100%"></md-input>
+
+    </md-card>
+    <md-card class="app-input-section">
+      <p>I ...</p>
+      <p-radioButton name="typegroup" value="Offer" label="Have" formControlName="type"></p-radioButton>
+      <p-radioButton name="typegroup" value="Request" label="Want" formControlName="type"></p-radioButton>
+      <p>... this course.</p>
+    </md-card>
+    <md-card class="app-input-section">
+      <md-input placeholder="Notes (optional). Why are you offering/requesting this course? If this is a request, what courses do you have to offer?" maxlength="500" name="description" formControlName="description" style="width: 100%"></md-input>
+    </md-card>
+    <button md-raised-button color="primary" type="submit">Submit</button>
+  </form>
+
+</div>

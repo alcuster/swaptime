@@ -1,0 +1,44 @@
+<md-sidenav-layout>
+  <md-sidenav *xs #sidenav opened="false" mode="over" class="app-sidenav">
+    <md-toolbar color="accent" class="toolbar-sidenav">
+      <span>swaptime</span>
+    </md-toolbar>
+
+    <md-nav-list>
+      <a (click)="toggle()" [routerLink]="['/listings']" md-list-item>All Trades</a>
+      <md-divider></md-divider>
+
+      <a (click)="toggle()" [routerLink]="['/mylistings']" md-list-item>My Trades</a>
+      <md-divider></md-divider>
+
+      <a (click)="toggle()" [routerLink]="['/messages']" md-list-item>Messages</a>
+      <md-divider></md-divider>
+
+      <a (click)="toggle()" [routerLink]="['/about']" md-list-item>About</a>
+      <md-divider></md-divider>
+    </md-nav-list>
+  </md-sidenav>
+
+  <md-sidenav *showItBootstrap="['md','sm', 'lg', 'xl']" #desktopsidenav opened="true" mode="side" class="app-sidenav">
+    <md-toolbar color="accent" class="toolbar-sidenav">
+      <span>swaptime</span>
+    </md-toolbar>
+
+    <md-nav-list>
+      <a [routerLink]="['/listings']" md-list-item>All Trades</a>
+      <md-divider></md-divider>
+
+      <a [routerLink]="['/mylistings']" md-list-item>My Trades</a>
+      <md-divider></md-divider>
+
+      <a [routerLink]="['/messages']" md-list-item>Messages</a>
+      <md-divider></md-divider>
+
+      <a [routerLink]="['/about']" md-list-item>About</a>
+      <md-divider></md-divider>
+    </md-nav-list>
+  </md-sidenav>
+
+  <router-outlet></router-outlet>
+
+</md-sidenav-layout>

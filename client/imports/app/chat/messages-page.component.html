@@ -1,0 +1,25 @@
+<div class="app-content">
+  <md-toolbar color="primary">
+      <button class="app-icon-button" [routerLink]="['/messages']">
+        <i class="material-icons app-toolbar-menu">arrow_back</i>
+      </button>
+      <span>Chat with {{title}} </span>
+  </md-toolbar>
+  <div class="messages-page-content">
+    <div *ngFor="let message of messages | async" class="message-wrapper">
+      <div [class]="'message message-' + message.ownership">
+        <div class="message-content">{{message.content}}</div>
+        <span class="message-timestamp">{{message.createdAt | amDateFormat: 'h:mm'}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <md-input-container>
+      <input [(ngModel)]="message" md-input placeholder="Message" (keyup.enter)="onInputKeypress()">
+    </md-input-container>
+    <button class="app-icon-button" (click)="sendMessage()">
+      <md-icon>navigate_next</md-icon>
+    </button>
+  </div>
+</div>

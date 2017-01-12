@@ -1,0 +1,19 @@
+<div class="app-content">
+  <md-toolbar color="primary">
+      <button class="app-icon-button" [routerLink]="['/listings']">
+        <i class="material-icons app-toolbar-menu">arrow_back</i>
+      </button>
+      <span>Messages</span>
+  </md-toolbar>
+  <div class="app-content">
+    <md-card *ngFor="let chat of chats | async" [routerLink]="['/chat', chat._id]">
+      <div class="chat-info">
+        <h2 class="chat-title">{{chat.title}}</h2>
+        <span *ngIf="chat.lastMessage" class="last-message">
+          <p class="last-message-content">{{chat.lastMessage.content}}</p>
+          <span class="last-message-timestamp">{{chat.lastMessage.createdAt | amCalendar}}</span>
+        </span>
+      </div>
+    </md-card>
+  </div>
+</div>

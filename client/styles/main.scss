@@ -1,0 +1,86 @@
+@import '../../../node_modules/@angular/material/core/theming/all-theme.scss';
+@include md-core();
+$primary: md-palette($md-light-blue, 800);
+$accent:  md-palette($md-amber, 600, A100, A400);
+$warn:    md-palette($md-red, 600);
+$theme: md-light-theme($primary, $accent, $warn);
+@include angular-material-theme($theme);
+@import '../../../node_modules/primeng/resources/themes/omega/theme.css';
+@import '../../../node_modules/primeng/resources/primeng.min.css';
+
+body, html {
+  margin: 0;
+}
+
+.app-content {
+  height: 100vh;
+}
+
+a:focus{
+  outline: 0;
+}
+
+.button app-icon-button:focus {
+  outline: 0;
+}
+
+.app-content md-card {
+  margin: 20px;
+  max-width: 600px;
+}
+
+.app-content md-checkbox {
+  margin: 10px;
+}
+
+.app-toolbar-filler {
+  flex: 1 1 auto;
+}
+
+.app-toolbar-menu {
+  padding: 0 14px 0 14px;
+  color: white;
+}
+
+.app-icon-button {
+  box-shadow: none;
+  user-select: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  filter: none;
+  font-weight: normal;
+  height: auto;
+  line-height: inherit;
+  margin: 0;
+  min-width: 0;
+  padding: 0;
+  text-align: left;
+  text-decoration: none;
+}
+
+.app-action {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.app-spinner {
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+}
+
+.app-input-icon {
+  font-size: 16px;
+}
+
+.app-list {
+  border: 1px solid rgba(0,0,0,0.12);
+  width: 350px;
+  margin: 20px;
+}
+
+.app-progress {
+  margin: 20px;
+}
