@@ -8,14 +8,18 @@
     </md-toolbar>
 
     <md-card>
+      <md-card-subtitle *ngIf="isOwner(listing)">Once you have completed your trade, please remember to delete this listing.</md-card-subtitle>
       <md-card-title>{{listing.type}}: {{ listing.department }} {{ listing.courseNumber }} {{listing.section}}</md-card-title>
       <h5>Course title: {{ listing.fullTitle }}</h5>
       <h5>Time/days: {{ listing.days }} {{ listing.time }}</h5>
       <h5>Listing description:</h5>
       <p>{{ listing.description }}</p>
+      <md-divider></md-divider>
+      <md-card-actions>
+        <button *ngIf="!isOwner(listing)" md-button (click)="addChat(listing.owner)"><md-icon>message</md-icon>CONTACT</button>
+        <button *ngIf="isOwner(listing)" md-button (click)="deleteListing()" [routerLink]="['/listings']"><md-icon>delete</md-icon>DELETE</button>
+      </md-card-actions>
     </md-card>
-    <button *ngIf="!isOwner(listing)" md-raised-button (click)="addChat(listing.owner)" color="primary">CONTACT</button>
-    <button *ngIf="isOwner(listing)" md-raised-button (click)="deleteListing()" [routerLink]="['/listings']">DELETE</button>
 
   </div>
 </div>

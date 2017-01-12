@@ -40,6 +40,9 @@
 
   .message-wrapper {
     margin-bottom: 9px;
+    padding-left: 10px;
+    padding-right: 10px;
+
 
     &::after {
       content: "";
@@ -104,4 +107,10 @@
       color: gray;
     }
   }
+}
+
+.message-textbox {
+  width: 100%;
+  display: inline-block;
+  bottom: 0px;
 }

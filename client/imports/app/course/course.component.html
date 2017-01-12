@@ -5,7 +5,4 @@
     <h4>{{ listing.ownerName }}</h4>
     <p *ngIf="listing.description">{{ listing.description | truncate:20 }}</p>
   </md-card-content>
-  <!-- <md-card-actions>
-    <button md-button [routerLink]="['/details', listing._id]">Info</button>
-  </md-card-actions> -->
 </md-card>

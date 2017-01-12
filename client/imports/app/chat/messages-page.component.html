@@ -14,12 +14,12 @@
     </div>
   </div>
 
-  <div>
-    <md-input-container>
+  <div class="message-textbox">
+    <md-input-container style="width: 90%">
       <input [(ngModel)]="message" md-input placeholder="Message" (keyup.enter)="onInputKeypress()">
     </md-input-container>
     <button class="app-icon-button" (click)="sendMessage()">
-      <md-icon>navigate_next</md-icon>
+      <md-icon>send</md-icon>
     </button>
   </div>
 </div>
