@@ -5,16 +5,19 @@
     </md-toolbar>
 
     <md-nav-list>
-      <a (click)="toggle()" [routerLink]="['/listings']" md-list-item>All Trades</a>
+      <a (click)="toggle()" [routerLink]="['/listings']" md-list-item><md-icon>search</md-icon>All Trades</a>
       <md-divider></md-divider>
 
-      <a (click)="toggle()" [routerLink]="['/mylistings']" md-list-item>My Trades</a>
+      <a (click)="toggle()" [routerLink]="['/submit']" md-list-item><md-icon>add</md-icon>Submit</a>
       <md-divider></md-divider>
 
-      <a (click)="toggle()" [routerLink]="['/messages']" md-list-item>Messages</a>
+      <a (click)="toggle()" [routerLink]="['/mylistings']" md-list-item><md-icon>list</md-icon>My Trades</a>
       <md-divider></md-divider>
 
-      <a (click)="toggle()" [routerLink]="['/about']" md-list-item>About</a>
+      <a (click)="toggle()" [routerLink]="['/messages']" md-list-item><md-icon>mail_outline</md-icon>Messages</a>
+      <md-divider></md-divider>
+
+      <a (click)="toggle()" [routerLink]="['/about']" md-list-item><md-icon>info_outline</md-icon>About</a>
       <md-divider></md-divider>
     </md-nav-list>
   </md-sidenav>
@@ -25,16 +28,19 @@
     </md-toolbar>
 
     <md-nav-list>
-      <a [routerLink]="['/listings']" md-list-item>All Trades</a>
+      <a [routerLink]="['/listings']" md-list-item><md-icon class="sidenav-icon">search</md-icon>All Trades</a>
       <md-divider></md-divider>
 
-      <a [routerLink]="['/mylistings']" md-list-item>My Trades</a>
+      <a [routerLink]="['/submit']" md-list-item><md-icon>add</md-icon> Submit</a>
       <md-divider></md-divider>
 
-      <a [routerLink]="['/messages']" md-list-item>Messages</a>
+      <a [routerLink]="['/mylistings']" md-list-item><md-icon>list</md-icon>My Trades</a>
       <md-divider></md-divider>
 
-      <a [routerLink]="['/about']" md-list-item>About</a>
+      <a [routerLink]="['/messages']" md-list-item><md-icon>mail_outline</md-icon>Messages</a>
+      <md-divider></md-divider>
+
+      <a [routerLink]="['/about']" md-list-item><md-icon>info_outline</md-icon>About</a>
       <md-divider></md-divider>
     </md-nav-list>
   </md-sidenav>
