@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from "rxjs";
 import { Meteor } from 'meteor/meteor';
+import { MeteorObservable, ObservableCursor } from "meteor-rxjs";
 
 import { CourseService } from '../course/course.service';
 import { Listing } from "../../../../both/models/listing.model";
@@ -12,6 +13,8 @@ import { Spring2017 } from '../../../../both/collections/spring2017.collection';
 import { Departments } from './departments.model';
 import { Days } from './days.model';
 import { Times } from './times.model';
+import { LabDays } from './labdays.model';
+import { LabTimes } from './labtimes.model';
 import { SelectItem } from 'primeng/primeng';
 
 import template from './submit.component.html';
@@ -24,13 +27,16 @@ import template from './submit.component.html';
 
 export class SubmitComponent implements OnInit {
   private courses: any; //bad...
-  private course: any;
   private filteredCourses: any;
   private departments: SelectItem[] = new Departments().departments;
   private times: SelectItem[] = new Times().times;
   private days: Days = new Days();
+  private labtimes: SelectItem[] = new Times().times;
+  private labdays: Days = new Days();
+
   private addForm: FormGroup;
   private dataAvailable: boolean = false;
+  private hasLab: boolean = false;
   private errorMessage: string;
   private davidsonLink: string;
 
@@ -45,6 +51,8 @@ export class SubmitComponent implements OnInit {
       courseNumber: ['', Validators.required],
       days: ['', Validators.required],
       time: ['', Validators.required],
+      labdays: '',
+      labtime: '',
       fullTitle: ['', Validators.required],
       type: ['', Validators.required],
       section: '',
@@ -84,10 +92,17 @@ export class SubmitComponent implements OnInit {
   }
 
   handleSelect(value) {
+    if (value.lab_days) {
+      this.hasLab = true;
+    } else {
+      this.hasLab = false;
+    }
     this.addForm.setValue({department: value.subj,
                            courseNumber: value.cnum,
                            days: value.days,
                            time: value.time,
+                           labdays: value.lab_days,
+                           labtime: value.lab_time,
                            fullTitle: value.title,
                            section: value.listingSection,
                            type: '',
@@ -103,10 +118,19 @@ export class SubmitComponent implements OnInit {
     }
 
     if (this.addForm.valid) {
-      this.courseService.submitToDB(this.addForm.value, Meteor.userId(), Meteor.user().profile.displayname);
-      this.addForm.reset();
-      let link = ['/listings'];
-      this.router.navigate(link);
+      const newListing: Listing = Object.assign({},
+                                                this.addForm.value,
+                                                { ownerName: Meteor.user().profile.displayname,
+                                                  createdAt: new Date() }
+                                              );
+      MeteorObservable.call('addListing', newListing).subscribe(() => {
+        this.addForm.reset();
+        let link = ['/listings'];
+        this.router.navigate(link);
+      }, (error) => {
+        console.error('Error: ', error);
+      });
+
     }
   }
 

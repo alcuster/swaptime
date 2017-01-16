@@ -16,7 +16,13 @@ Meteor.methods({
     if (!this.userId) throw new Meteor.Error('unauthorized',
       'User must be logged in to create a new listing.');
 
-    ListingsCollection.collection.insert(listing);
+    const newlisting: Listing = Object.assign({},
+                                              listing,
+                                              {
+                                                owner: this.userId }
+                                            );
+
+    ListingsCollection.collection.insert(newlisting);
   },
   addChat(receiverId: string, listing: Listing): void {
     if (!this.userId) throw new Meteor.Error('unauthorized',

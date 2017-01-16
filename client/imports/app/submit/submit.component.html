@@ -44,15 +44,34 @@
       <p-dropdown [options]="this.times" formControlName="time" [style]="{'width':'80%'}"></p-dropdown>
       <md-input placeholder="Section (leave empty if none)" name="section" formControlName="section" style="width: 100%"></md-input>
 
+      <md-checkbox [checked]="this.hasLab" (change)="this.hasLab = !this.hasLab">
+        This course has a lab.
+      </md-checkbox>
+
+      <div *ngIf="hasLab">
+        <p>Lab Days: </p>
+        <p-radioButton name="labdaysgroup" value="M" label="M" formControlName="labdays"></p-radioButton>
+        <p-radioButton name="labdaysgroup" value="T" label="T" formControlName="labdays"></p-radioButton>
+        <p-radioButton name="labdaysgroup" value="W" label="W" formControlName="labdays"></p-radioButton>
+        <p-radioButton name="labdaysgroup" value="R" label="R" formControlName="labdays"></p-radioButton>
+        <p-radioButton name="labdaysgroup" value="F" label="F" formControlName="labdays"></p-radioButton>
+        <p-radioButton name="labdaysgroup" value="TR" label="TR" formControlName="labdays"></p-radioButton>
+
+        <p>Lab Time: </p>
+        <p-dropdown [options]="this.labtimes" formControlName="labtime" [style]="{'width':'80%'}"></p-dropdown>
+      </div>
+
     </md-card>
     <md-card class="app-input-section">
+      <md-card-title>Listing Type</md-card-title>
       <p>I ...</p>
       <p-radioButton name="typegroup" value="Offer" label="Have" formControlName="type"></p-radioButton>
       <p-radioButton name="typegroup" value="Request" label="Want" formControlName="type"></p-radioButton>
       <p>... this course.</p>
     </md-card>
     <md-card class="app-input-section">
-      <md-input placeholder="Notes (optional). Why are you offering/requesting this course? If this is a request, what courses do you have to offer?" maxlength="500" name="description" formControlName="description" style="width: 100%"></md-input>
+      <md-card-title>Notes (optional)</md-card-title>
+      <md-input placeholder="Why are you offering/requesting this course? If this is a request, what courses do you have to offer?" maxlength="500" name="description" formControlName="description" style="width: 100%"></md-input>
     </md-card>
     <button md-raised-button color="primary" type="submit">Submit</button>
   </form>

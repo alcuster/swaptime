@@ -5,6 +5,8 @@ export interface Listing extends CollectionObject {
   courseNumber: string;
   days: string;
   time: string;
+  labdays?: string;
+  labtime?: string;
   fullTitle: string;
   description: string;
   section?: string;

@@ -12,6 +12,7 @@
       <md-card-title>{{listing.type}}: {{ listing.department }} {{ listing.courseNumber }} {{listing.section}}</md-card-title>
       <h5>Course title: {{ listing.fullTitle }}</h5>
       <h5>Time/days: {{ listing.days }} {{ listing.time }}</h5>
+      <h5 *ngIf="listing.labdays">Lab: {{ listing.labdays }} {{ listing.labtime }}</h5>
       <h5>Listing description:</h5>
       <p>{{ listing.description }}</p>
       <md-divider></md-divider>
