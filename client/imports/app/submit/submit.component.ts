@@ -94,20 +94,31 @@ export class SubmitComponent implements OnInit {
   handleSelect(value) {
     if (value.lab_days) {
       this.hasLab = true;
+      this.addForm.setValue({department: value.subj,
+                             courseNumber: value.cnum,
+                             days: value.days,
+                             time: value.time,
+                             labdays: value.lab_days,
+                             labtime: value.lab_time,
+                             fullTitle: value.title,
+                             section: value.listingSection,
+                             type: '',
+                             description: ''
+                           });
     } else {
       this.hasLab = false;
+      this.addForm.setValue({department: value.subj,
+                             courseNumber: value.cnum,
+                             days: value.days,
+                             time: value.time,
+                             labdays: '',
+                             labtime: '',
+                             fullTitle: value.title,
+                             section: value.listingSection,
+                             type: '',
+                             description: ''
+                           });
     }
-    this.addForm.setValue({department: value.subj,
-                           courseNumber: value.cnum,
-                           days: value.days,
-                           time: value.time,
-                           labdays: value.lab_days,
-                           labtime: value.lab_time,
-                           fullTitle: value.title,
-                           section: value.listingSection,
-                           type: '',
-                           description: ''
-                         });
     this.davidsonLink = 'https://www.davidson.edu/general-course-detail/?subj=' + value.subj + '&cnum=' + value.cnum;
   }
 
