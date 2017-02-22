@@ -29,6 +29,7 @@ import { MessagesPage } from './chat/messages-page.component';
 import { ChatsComponent } from './chats/chats.component';
 import { LoginComponent } from './auth/login.component';
 import { SignupComponent } from './auth/signup.component';
+import { VerifyComponent } from './auth/verify.component';
 import { AboutComponent } from './about/about.component';
 
 //Pipes
@@ -48,6 +49,7 @@ import { TruncatePipe } from './shared/truncate.pipe';
     ChatsComponent,
     LoginComponent,
     SignupComponent,
+    VerifyComponent,
     AboutComponent,
     DisplayNamePipe,
     TruncatePipe
@@ -63,6 +65,7 @@ import { TruncatePipe } from './shared/truncate.pipe';
     MessagesPage,
     ChatsComponent,
     LoginComponent,
+    VerifyComponent,
     SignupComponent,
     AboutComponent
   ],

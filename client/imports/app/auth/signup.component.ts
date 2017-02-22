@@ -1,7 +1,10 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
+import { InjectUser } from 'angular2-meteor-accounts-ui';
 
 import template from './signup.component.html';
 import animals from './animals.min';
@@ -11,8 +14,9 @@ import adjectives from './adjectives.min';
   selector: 'signup',
   template
 })
-
+@InjectUser('user')
 export class SignupComponent implements OnInit {
+  user: Meteor.User;
   signupForm: FormGroup;
   error: string;
   displayname: string;
@@ -24,7 +28,7 @@ export class SignupComponent implements OnInit {
               private formBuilder: FormBuilder) {}
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
-      email: ['', Validators.required],
+      email: ['', Validators.pattern('^[a-z0-9]+(\.[_a-z0-9]+)*@davidson.edu$')],
       password: ['', Validators.required],
       displayname: ['', Validators.required]
     });
@@ -41,15 +45,26 @@ export class SignupComponent implements OnInit {
           displayname: this.signupForm.value.displayname
         }
       }, (err) => {
-        this.zone.run(() => {
+
           if (err) {
             this.error = err;
           } else {
-            this.router.navigate(['/listings']);
+
+            Meteor.call('sendVerificationLink', (err, response) => {
+              this.zone.run(() => {
+                if (err) {
+                  this.error = err;
+                } else {
+                  this.router.navigate(['/listings']);
+                }
+              });
+            });
           }
-        });
+
       });
+    //end validation check
     }
+  //end signup function
   }
 
   randomElem(list) {

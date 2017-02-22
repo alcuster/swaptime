@@ -12,6 +12,11 @@
   <div *ngIf="user">
     <a md-button [routerLink]="['/mylistings']">Logged in as: {{ user | displayName }}</a>
     <button md-button (click)="logout()">Logout</button>
+    <md-toolbar *ngIf="!user.emails[0].verified">
+      <p>You have not verified your account yet. You will not be able to post listings or contact other users until you verify
+      your account!</p>
+      <a href="javascript:void(0);" (click)="resendVerification()" >Re-send verification email</a>
+    </md-toolbar>
   </div>
   <app-course
     *ngFor="let i of data | async"

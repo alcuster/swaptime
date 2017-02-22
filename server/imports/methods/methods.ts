@@ -1,4 +1,6 @@
 import { Meteor } from 'meteor/meteor';
+import { Accounts } from 'meteor/accounts-base';
+
 import { ListingsCollection } from '../../../both/collections/listings.collection';
 import { Listing } from '../../../both/models/listing.model';
 import { Chats } from '../../../both/collections/chats.collection';
@@ -16,6 +18,12 @@ Meteor.methods({
     if (!this.userId) throw new Meteor.Error('unauthorized',
       'User must be logged in to create a new listing.');
 
+    const unverified = Meteor.users.findOne({_id: this.userId, 'emails.0.verified': false});
+
+    if (unverified) throw new Meteor.Error('unauthorized',
+      'User must verify email before submitting a listing.'
+    );
+
     const newlisting: Listing = Object.assign({},
                                               listing,
                                               {
@@ -27,6 +35,12 @@ Meteor.methods({
   addChat(receiverId: string, listing: Listing): void {
     if (!this.userId) throw new Meteor.Error('unauthorized',
       'User must be logged in to create a new chat.');
+
+    const unverified = Meteor.users.findOne({_id: this.userId, 'emails.0.verified': false});
+
+    if (unverified) throw new Meteor.Error('unauthorized',
+      'User must verify email before initiating chats.'
+    );
 
     check(receiverId, nonEmptyString);
 
@@ -71,5 +85,11 @@ Meteor.methods({
       'User must be logged in to query courses DB.');
 
     return Spring2017.collection.find().fetch();
+  },
+  sendVerificationLink() {
+    if (!this.userId) throw new Meteor.Error('unauthorized',
+      'User must be logged in to send email verification link.');
+
+    return Accounts.sendVerificationEmail(this.userId);
   }
 });

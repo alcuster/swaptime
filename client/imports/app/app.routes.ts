@@ -9,6 +9,7 @@ import { MessagesPage } from './chat/messages-page.component';
 import { ChatsComponent } from './chats/chats.component';
 import { LoginComponent } from './auth/login.component';
 import { SignupComponent } from './auth/signup.component';
+import { VerifyComponent } from './auth/verify.component';
 import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
@@ -49,7 +50,11 @@ const routes: Routes = [
   },
   { path: 'about',
     component: AboutComponent
+  },
+  { path: 'verify-email/:token',
+    component: VerifyComponent
   }
+
 ];
 
 export const routing = RouterModule.forRoot(routes);

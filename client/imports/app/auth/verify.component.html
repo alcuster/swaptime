@@ -1,0 +1,8 @@
+<md-toolbar layout="row" layout-fill layout-padding layout-margin>
+  <p class="md-body-1">Verifying...</p>
+</md-toolbar>
+<div [hidden]="error == ''">
+  <md-toolbar class="md-warn" layout="row" layout-fill layout-padding layout-margin>
+    <p class="md-body-1">{{ error }}</p>
+  </md-toolbar>
+</div>
