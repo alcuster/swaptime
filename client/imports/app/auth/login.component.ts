@@ -37,4 +37,16 @@ export class LoginComponent implements OnInit {
       });
     }
   }
+
+  loginWithFacebook() {
+    Meteor.loginWithFacebook({ requestPermissions: ['public_profile', 'email'], loginStyle: 'popup' }, (err) => {
+        this.zone.run(() => {
+            if (err) {
+                this.error = err;
+            } else {
+              this.router.navigate(['/listings']);
+            }
+        });
+    });
+    }
 }
