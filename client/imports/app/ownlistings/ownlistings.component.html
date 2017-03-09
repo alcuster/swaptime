@@ -4,14 +4,21 @@
       <i class="material-icons app-toolbar-menu">menu</i>
     </button>
     <span [routerLink]="['/listings']">My Listings</span>
+    <span class="example-spacer"></span>
+    <div *ngIf="!user">
+      <button md-button (click)="openDialog()">Log In</button>
+      <button md-button (click)="openSignupDialog()">Sign Up</button>
+    </div>
+    <div *ngIf="user">
+      <a md-button [routerLink]="['/mylistings']">Logged in as: {{ user | displayName }}</a>
+      <button md-button (click)="logout()">Log Out</button>
+    </div>
   </md-toolbar>
-  <div *ngIf="!user">
-    <a md-button [routerLink]="['/login']" >Login</a>
-    <a md-button [routerLink]="['/signup']">Sign up</a>
-  </div>
   <div *ngIf="user">
-    <a md-button [routerLink]="['/mylistings']">Logged in as: {{ user | displayName }}</a>
-    <button md-button (click)="logout()">Logout</button>
+    <md-toolbar *ngIf="!user.emails[0].verified">
+      <p>You have not verified your account yet.&nbsp;</p>
+      <a href="javascript:void(0);" (click)="resendVerification()">Re-send activation email</a>
+    </md-toolbar>
   </div>
   <app-course
     *ngFor="let i of data | async"

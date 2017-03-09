@@ -1,0 +1,43 @@
+<md-card>
+  <md-card-content>
+    <button (click)="loginWithFacebook()" md-raised-button color="warn" class="login-button">
+      <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
+      &nbsp; Sign up with Facebook
+    </button>
+
+    <div class="signup-or-separator">
+      <span class="h6 signup-or-separator--text">or</span>
+      <hr>
+    </div>
+
+    <form [formGroup]="signupForm" #f="ngForm" layout="column" layout-fill layout-padding layout-margin>
+      <md-input-container>
+        <input mdInput formControlName="email" type="email" placeholder="@davidson.edu email"></input>
+      </md-input-container>
+
+      <md-input-container>
+        <input mdInput formControlName="password" type="password" placeholder="Password"></input>
+      </md-input-container>
+
+      <md-input-container>
+        <input mdInput formControlName="displayname" placeholder="Username"></input>
+      </md-input-container>
+
+      <div layout="row" layout-align="space-between center">
+        <button (click)="signup()" md-raised-button color="primary" class="login-button" type="submit" aria-label="login">Sign up</button>
+      </div>
+
+    </form>
+
+    <div [hidden]="error == ''">
+      <md-toolbar class="md-warn" layout="row" layout-fill layout-padding layout-margin>
+        <p class="md-body-1">{{ error }}</p>
+      </md-toolbar>
+    </div>
+
+    <div class="button-row">
+      <p>Already have a Swaptime account?</p>
+      <button md-button>Log in</button>
+    </div>
+  <md-card-content>
+</md-card>

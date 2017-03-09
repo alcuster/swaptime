@@ -1,0 +1,35 @@
+<md-card>
+  <md-card-content>
+    <button (click)="loginWithFacebook()" md-raised-button color="warn" class="login-button">
+      <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
+      &nbsp; Log in with Facebook
+    </button>
+
+    <div class="signup-or-separator">
+      <span class="h6 signup-or-separator--text">or</span>
+      <hr>
+    </div>
+
+    <form [formGroup]="loginForm" #f="ngForm" layout="column" layout-fill layout-padding layout-margin>
+      <md-input-container>
+        <input mdInput formControlName="email" type="email" placeholder="Email"></input>
+      </md-input-container>
+
+      <md-input-container>
+        <input mdInput formControlName="password" type="password" placeholder="Password"></input>
+      </md-input-container>
+
+      <div layout="row" layout-align="space-between center">
+        <button (click)="login()" md-raised-button color="primary" class="login-button" type="submit" aria-label="login">Log in</button>
+      </div>
+    </form>
+
+    <md-divider></md-divider>
+
+    <div class="button-row">
+      <p>Don't have an account?</p>
+      <button md-button>Sign up</button>
+    </div>
+
+  </md-card-content>
+</md-card>

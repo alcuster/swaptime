@@ -23,13 +23,18 @@
 
   <form [formGroup]="addForm" (ngSubmit)="submitListing()">
     <md-card class="app-input-section">
-      <md-input placeholder="Course Title" name="fulltitle" formControlName="fullTitle" style="width: 100%"></md-input>
+      <md-input-container>
+        <input mdInput placeholder="Course Title" name="fulltitle" formControlName="fullTitle" style="width: 100%"></input>
+      </md-input-container>
 
       <a *ngIf="davidsonLink" target="_blank" [href]="davidsonLink">Course info (www.davidson.edu)</a>
 
       <p>Department:</p>
       <p-dropdown [options]="this.departments" formControlName="department" [style]="{'width':'80%'}"></p-dropdown>
-      <md-input placeholder="Course Number" maxlength="3" formControlName="courseNumber" style="width: 100%"></md-input>
+
+      <md-input-container>
+          <input mdInput placeholder="Course Number" maxlength="3" formControlName="courseNumber" style="width: 100%"></input>
+      </md-input-container>
 
       <p>Days: </p>
       <p-radioButton name="daysgroup" value="M" label="M" formControlName="days"></p-radioButton>
@@ -42,7 +47,10 @@
 
       <p>Time: </p>
       <p-dropdown [options]="this.times" formControlName="time" [style]="{'width':'80%'}"></p-dropdown>
-      <md-input placeholder="Section (leave empty if none)" name="section" formControlName="section" style="width: 100%"></md-input>
+
+      <md-input-container>
+        <input mdInput placeholder="Section (leave empty if none)" name="section" formControlName="section" style="width: 100%"></input>
+      </md-input-container>
 
       <md-checkbox [checked]="this.hasLab" (change)="this.hasLab = !this.hasLab">
         This course has a lab.
@@ -71,7 +79,10 @@
     </md-card>
     <md-card class="app-input-section">
       <md-card-title>Notes (optional)</md-card-title>
-      <md-input placeholder="Why are you offering/requesting this course? If this is a request, what courses do you have to offer?" maxlength="500" name="description" formControlName="description" style="width: 100%"></md-input>
+      <md-input-container>
+        <input mdInput placeholder="Why are you offering/requesting this course? If this is a request, what courses do you have to offer?" maxlength="500" name="description" formControlName="description" style="width: 100%"></input>
+      </md-input-container>
+
     </md-card>
     <button md-raised-button color="primary" type="submit">Submit</button>
   </form>

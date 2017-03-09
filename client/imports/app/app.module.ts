@@ -28,7 +28,9 @@ import { SubmitComponent } from './submit/submit.component';
 import { MessagesPage } from './chat/messages-page.component';
 import { ChatsComponent } from './chats/chats.component';
 import { LoginComponent } from './auth/login.component';
+import { LoginDialog } from './auth/logindialog.component';
 import { SignupComponent } from './auth/signup.component';
+import { SignupDialog } from './auth/signupdialog.component';
 import { VerifyComponent } from './auth/verify.component';
 import { AboutComponent } from './about/about.component';
 
@@ -48,7 +50,9 @@ import { TruncatePipe } from './shared/truncate.pipe';
     MessagesPage,
     ChatsComponent,
     LoginComponent,
+    LoginDialog,
     SignupComponent,
+    SignupDialog,
     VerifyComponent,
     AboutComponent,
     DisplayNamePipe,
@@ -65,8 +69,10 @@ import { TruncatePipe } from './shared/truncate.pipe';
     MessagesPage,
     ChatsComponent,
     LoginComponent,
+    LoginDialog,
     VerifyComponent,
     SignupComponent,
+    SignupDialog,
     AboutComponent
   ],
   // Providers
@@ -81,7 +87,7 @@ import { TruncatePipe } from './shared/truncate.pipe';
     ReactiveFormsModule,
     AccountsModule,
     HttpModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     DropdownModule,
     RadioButtonModule,
     MomentModule,

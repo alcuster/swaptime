@@ -13,16 +13,27 @@
           <form [formGroup]="signupForm" #f="ngForm" (ngSubmit)="signup()"
                 layout="column" layout-fill layout-padding layout-margin>
 
-            <md-input formControlName="email" type="email" placeholder="@davidson.edu email"></md-input>
+            <md-input-container>
+              <input mdInput formControlName="email" type="email" placeholder="@davidson.edu email"></input>
+            </md-input-container>
+
             <p>Your email is used only for authentication and will not be shared with other users.</p>
             <md-divider></md-divider>
-            <md-input formControlName="password" type="password" placeholder="Password"></md-input>
+
+            <md-input-container>
+              <input mdInput formControlName="password" type="password" placeholder="Password"></input>
+            </md-input-container>
+
             <md-divider></md-divider>
             <div layout="row" layout-align="space-between center">
               <p>Your username will be attached to the listings you submit. To remain anonymous, try generating a fun 'animal + adjective' username using the button below.</p>
               <button md-raised-button (click)="makeName()" type="button" style="padding:50">Generate a fun username</button>
             </div>
-            <md-input formControlName="displayname" type="displayname" [value]="displayname" placeholder="Username"></md-input>
+
+            <md-input-container>
+              <input mdInput formControlName="displayname" type="displayname" [value]="displayname" placeholder="Username"></input>
+            </md-input-container>
+          
             <div layout="row" layout-align="space-between center">
               <button md-raised-button class="md-primary" type="submit" aria-label="login">Sign Up</button>
             </div>
