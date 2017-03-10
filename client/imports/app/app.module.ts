@@ -27,9 +27,7 @@ import { OwnListingsComponent } from './ownlistings/ownlistings.component';
 import { SubmitComponent } from './submit/submit.component';
 import { MessagesPage } from './chat/messages-page.component';
 import { ChatsComponent } from './chats/chats.component';
-import { LoginComponent } from './auth/login.component';
 import { LoginDialog } from './auth/logindialog.component';
-import { SignupComponent } from './auth/signup.component';
 import { SignupDialog } from './auth/signupdialog.component';
 import { VerifyComponent } from './auth/verify.component';
 import { AboutComponent } from './about/about.component';
@@ -49,9 +47,7 @@ import { TruncatePipe } from './shared/truncate.pipe';
     SubmitComponent,
     MessagesPage,
     ChatsComponent,
-    LoginComponent,
     LoginDialog,
-    SignupComponent,
     SignupDialog,
     VerifyComponent,
     AboutComponent,
@@ -68,11 +64,9 @@ import { TruncatePipe } from './shared/truncate.pipe';
     SubmitComponent,
     MessagesPage,
     ChatsComponent,
-    LoginComponent,
     LoginDialog,
-    VerifyComponent,
-    SignupComponent,
     SignupDialog,
+    VerifyComponent,
     AboutComponent
   ],
   // Providers

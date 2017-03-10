@@ -81,9 +81,6 @@ Meteor.methods({
     });
   },
   getCourses() {
-    if (!this.userId) throw new Meteor.Error('unauthorized',
-      'User must be logged in to query courses DB.');
-
     return Spring2017.collection.find().fetch();
   },
   sendVerificationLink() {

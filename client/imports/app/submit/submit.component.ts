@@ -18,11 +18,12 @@ import { LabTimes } from './labtimes.model';
 import { SelectItem } from 'primeng/primeng';
 
 import template from './submit.component.html';
+import style from './submit.component.scss';
 
 @Component({
   selector: 'app-submit',
   template,
-  styleUrls: ['./submit.component.scss']
+  styles: [style]
 })
 
 export class SubmitComponent implements OnInit {
@@ -64,7 +65,7 @@ export class SubmitComponent implements OnInit {
   getCourses(): void {
     Meteor.call('getCourses', (err, result) => this.ngZone.run(() => {
       if (err) {
-        this.errorMessage = "You need to be logged in to access the Spring 2017 courses database.";
+        this.errorMessage = "Error loading courses database.";
         console.error('error', err);
       } else {
         this.courses = result;

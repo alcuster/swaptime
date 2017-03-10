@@ -7,8 +7,6 @@ import { OwnListingsComponent } from './ownlistings/ownlistings.component';
 import { SubmitComponent } from './submit/submit.component';
 import { MessagesPage } from './chat/messages-page.component';
 import { ChatsComponent } from './chats/chats.component';
-import { LoginComponent } from './auth/login.component';
-import { SignupComponent } from './auth/signup.component';
 import { VerifyComponent } from './auth/verify.component';
 import { AboutComponent } from './about/about.component';
 
@@ -41,12 +39,6 @@ const routes: Routes = [
   {
     path: 'messages',
     component: ChatsComponent
-  },
-  { path: 'login',
-    component: LoginComponent
-  },
-  { path: 'signup',
-    component: SignupComponent
   },
   { path: 'about',
     component: AboutComponent

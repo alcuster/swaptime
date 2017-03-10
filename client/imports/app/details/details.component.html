@@ -1,12 +1,11 @@
+<md-toolbar color="primary">
+  <button class="app-icon-button" [routerLink]="['/listings']">
+    <i class="material-icons app-toolbar-menu">arrow_back</i>
+  </button>
+  <span>{{listing.type}}: {{ listing.department }} {{ listing.courseNumber }}</span>
+</md-toolbar>
 <div class="app-content">
   <div *ngIf="listing">
-    <md-toolbar color="primary">
-      <button class="app-icon-button" [routerLink]="['/listings']">
-        <i class="material-icons app-toolbar-menu">arrow_back</i>
-      </button>
-      <span>Listing details - "{{listing.type}}: {{ listing.department }} {{ listing.courseNumber }}"</span>
-    </md-toolbar>
-
     <md-card>
       <md-card-subtitle *ngIf="isOwner(listing)">Once you have completed your trade, please remember to delete this listing.</md-card-subtitle>
       <md-card-title>{{listing.type}}: {{ listing.department }} {{ listing.courseNumber }} {{listing.section}}</md-card-title>

@@ -1,11 +1,10 @@
-<div class="app-content">
 <md-toolbar color="primary">
-  <button class="app-icon-button" [routerLink]="['/listings']">
+  <button *xs class="app-icon-button" [routerLink]="['/listings']">
     <i class="material-icons app-toolbar-menu">arrow_back</i>
   </button>
   <span>Submit a listing</span>
 </md-toolbar>
-
+<div class="app-content">
   <md-card>
     <div *ngIf="dataAvailable">
       <md-card-title>
@@ -21,10 +20,11 @@
     </div>
   </md-card>
 
-  <form [formGroup]="addForm" (ngSubmit)="submitListing()">
+  <form [formGroup]="addForm" (ngSubmit)="submitListing()" class="submit-form">
     <md-card class="app-input-section">
-      <md-input-container>
-        <input mdInput placeholder="Course Title" name="fulltitle" formControlName="fullTitle" style="width: 100%"></input>
+      <md-card-title>Course Info</md-card-title>
+      <md-input-container class="full-width">
+        <input mdInput placeholder="Course Title" name="fulltitle" formControlName="fullTitle"></input>
       </md-input-container>
 
       <a *ngIf="davidsonLink" target="_blank" [href]="davidsonLink">Course info (www.davidson.edu)</a>
@@ -32,7 +32,7 @@
       <p>Department:</p>
       <p-dropdown [options]="this.departments" formControlName="department" [style]="{'width':'80%'}"></p-dropdown>
 
-      <md-input-container>
+      <md-input-container class="full-width">
           <input mdInput placeholder="Course Number" maxlength="3" formControlName="courseNumber" style="width: 100%"></input>
       </md-input-container>
 
@@ -48,7 +48,7 @@
       <p>Time: </p>
       <p-dropdown [options]="this.times" formControlName="time" [style]="{'width':'80%'}"></p-dropdown>
 
-      <md-input-container>
+      <md-input-container class="full-width">
         <input mdInput placeholder="Section (leave empty if none)" name="section" formControlName="section" style="width: 100%"></input>
       </md-input-container>
 
@@ -77,14 +77,15 @@
       <p-radioButton name="typegroup" value="Request" label="Want" formControlName="type"></p-radioButton>
       <p>... this course.</p>
     </md-card>
+
     <md-card class="app-input-section">
       <md-card-title>Notes (optional)</md-card-title>
-      <md-input-container>
-        <input mdInput placeholder="Why are you offering/requesting this course? If this is a request, what courses do you have to offer?" maxlength="500" name="description" formControlName="description" style="width: 100%"></input>
+      <p>Why are you offering/requesting this course? If this is a request, what courses do you have to offer?</p>
+      <md-input-container class="full-width">
+        <input mdInput placeholder="Say anything..." maxlength="500" name="description" formControlName="description" style="width: 100%"></input>
       </md-input-container>
-
     </md-card>
-    <button md-raised-button color="primary" type="submit">Submit</button>
-  </form>
 
+    <button class="full-width-button" md-raised-button color="primary" type="submit">Submit</button>
+  </form>
 </div>
