@@ -54,7 +54,6 @@ export class ListingsComponent implements OnInit, OnDestroy {
     this.sidenavService.requestToggle();
   }
 
-  //TO-DO: Move to server-side
   resendVerification() {
     Meteor.call( 'sendVerificationLink', ( error, response ) => {
       if ( error ) {

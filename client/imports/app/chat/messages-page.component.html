@@ -16,7 +16,7 @@
 
   <div class="message-textbox">
     <md-input-container style="width: 90%">
-      <input [(ngModel)]="message" md-input placeholder="Message" (keyup.enter)="onInputKeypress()">
+      <input mdInput [(ngModel)]="message" md-input placeholder="Message" (keyup.enter)="onInputKeypress()"></input>
     </md-input-container>
     <button class="app-icon-button" (click)="sendMessage()">
       <md-icon>send</md-icon>

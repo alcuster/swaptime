@@ -11,7 +11,7 @@
       <button md-button (click)="openSignupDialog()">Sign Up</button>
     </div>
     <div *ngIf="user">
-      <a md-button [routerLink]="['/mylistings']">Logged in as: {{ user | displayName }}</a>
+      <a md-button [routerLink]="['/mylistings']">{{ user | displayName }}</a>
       <button md-button (click)="logout()">Log Out</button>
     </div>
   </md-toolbar>
