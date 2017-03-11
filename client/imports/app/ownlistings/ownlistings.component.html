@@ -2,13 +2,10 @@
   <!-- <button *xs class="app-icon-button" (click)="toggle()">
     <i class="material-icons app-toolbar-menu">menu</i>
   </button> -->
-  <span [routerLink]="['/listings']">My Listings</span>
+  <span [routerLink]="['/listings']">My Trades</span>
   <span class="example-spacer"></span>
-  <div *ngIf="!user">
-    <button md-button (click)="openDialog()">Log In</button>
-    <button md-button (click)="openSignupDialog()">Sign Up</button>
-  </div>
   <div *ngIf="user">
+    <img class="avatar-image" src="{{user | avatar}}" >
     <button md-button [mdMenuTriggerFor]="menu">{{ user | displayName }}</button>
     <md-menu [overlapTrigger]="false" #menu="mdMenu">
       <button md-button (click)="logout()">Log Out</button>
@@ -18,11 +15,11 @@
 
 <md-toolbar *xs color="accent">
   <button md-icon-button [routerLink]="['/listings']"><md-icon class="toolbar-icon">view_list</md-icon></button>
-  <span class="fill-remaining-space"></span>
+  <span class="example-spacer"></span>
   <button md-icon-button [routerLink]="['/submit']"><md-icon class="toolbar-icon">create</md-icon></button>
-  <span class="fill-remaining-space"></span>
+  <span class="example-spacer"></span>
   <button md-icon-button [routerLink]="['/messages']"><md-icon class="toolbar-icon">mail</md-icon></button>
-  <span class="fill-remaining-space"></span>
+  <span class="example-spacer"></span>
   <button md-icon-button [routerLink]="['/about']"><md-icon class="toolbar-icon">info</md-icon></button>
 </md-toolbar>
 
@@ -33,6 +30,20 @@
       <a href="javascript:void(0);" (click)="resendVerification()">Re-send activation email</a>
     </md-toolbar>
   </div>
+
+  <md-card class="profile-card">
+    <md-card-header>
+      <md-card-title>{{ user | displayName }}</md-card-title>
+    </md-card-header>
+
+    <img md-card-image src="{{user | profilePic}}">
+    <md-card-content>
+      <p>
+        This is your profile, where you can see all the trades you've posted.
+      </p>
+    </md-card-content>
+  </md-card>
+
   <app-course
     *ngFor="let i of data | async"
     [listing]="i">

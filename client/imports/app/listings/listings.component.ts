@@ -67,12 +67,22 @@ export class ListingsComponent implements OnInit, OnDestroy {
     });
   }
 
-  openDialog() {
+  openLoginDialog() {
     let dialogRef = this.dialog.open(LoginDialog);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == 'signup') {
+        this.openSignupDialog();
+      }
+    });
   }
 
   openSignupDialog() {
     let dialogRef = this.dialog.open(SignupDialog);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == 'login') {
+        this.openLoginDialog();
+      }
+    });
   }
 
   ngOnDestroy() {

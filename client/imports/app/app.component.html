@@ -1,26 +1,4 @@
 <md-sidenav-container>
-  <md-sidenav *xs #sidenav opened="false" mode="over">
-    <md-toolbar color="accent" class="toolbar-sidenav">
-      <span>swaptime</span>
-    </md-toolbar>
-
-    <md-nav-list>
-      <a (click)="toggle()" [routerLink]="['/listings']" md-list-item><md-icon>search</md-icon>All Trades</a>
-      <md-divider></md-divider>
-
-      <a (click)="toggle()" [routerLink]="['/submit']" md-list-item><md-icon>add</md-icon>Submit</a>
-      <md-divider></md-divider>
-
-      <a (click)="toggle()" [routerLink]="['/mylistings']" md-list-item><md-icon>list</md-icon>My Trades</a>
-      <md-divider></md-divider>
-
-      <a (click)="toggle()" [routerLink]="['/messages']" md-list-item><md-icon>mail_outline</md-icon>Messages</a>
-      <md-divider></md-divider>
-
-      <a (click)="toggle()" [routerLink]="['/about']" md-list-item><md-icon>info_outline</md-icon>About</a>
-      <md-divider></md-divider>
-    </md-nav-list>
-  </md-sidenav>
 
   <md-sidenav *showItBootstrap="['md','sm', 'lg', 'xl']" #desktopsidenav opened="true" mode="side" class="app-sidenav">
     <md-toolbar color="accent" class="toolbar-sidenav">
@@ -34,12 +12,13 @@
       <a [routerLink]="['/submit']" md-list-item><md-icon>add</md-icon> Submit</a>
       <md-divider></md-divider>
 
-      <a [routerLink]="['/mylistings']" md-list-item><md-icon>list</md-icon>My Trades</a>
-      <md-divider></md-divider>
-
-      <a [routerLink]="['/messages']" md-list-item><md-icon>mail_outline</md-icon>Messages</a>
-      <md-divider></md-divider>
-
+      <ng-container *ngIf="user">
+        <a [routerLink]="['/mylistings']" md-list-item><md-icon>list</md-icon>My Trades</a>
+        <md-divider></md-divider>
+        <a [routerLink]="['/messages']" md-list-item><md-icon>mail_outline</md-icon>Messages</a>
+        <md-divider></md-divider>
+      </ng-container>
+      
       <a [routerLink]="['/about']" md-list-item><md-icon>info_outline</md-icon>About</a>
       <md-divider></md-divider>
     </md-nav-list>

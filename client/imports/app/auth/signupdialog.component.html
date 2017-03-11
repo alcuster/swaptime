@@ -1,4 +1,8 @@
 <md-card>
+  <md-toolbar style="background-color:#fff; padding: 0; margin: 0; max-height:16px; min-height:16px;" *xs>
+    <span class="example-spacer"></span>
+    <button md-dialog-close md-icon-button tabindex="-1" style="left: 10px; bottom:30px;"><md-icon style="padding: 0;">close</md-icon></button>
+  </md-toolbar>
   <md-card-content>
     <button (click)="loginWithFacebook()" md-raised-button color="warn" class="login-button">
       <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
@@ -11,15 +15,15 @@
     </div>
 
     <form [formGroup]="signupForm" #f="ngForm" layout="column" layout-fill layout-padding layout-margin>
-      <md-input-container>
+      <md-input-container style="width:100%;">
         <input mdInput formControlName="email" type="email" placeholder="@davidson.edu email"></input>
       </md-input-container>
 
-      <md-input-container>
+      <md-input-container style="width:100%;">
         <input mdInput formControlName="password" type="password" placeholder="Password"></input>
       </md-input-container>
 
-      <md-input-container>
+      <md-input-container style="width:100%;">
         <input mdInput formControlName="displayname" placeholder="Username"></input>
       </md-input-container>
 
@@ -37,7 +41,7 @@
     <md-divider></md-divider>
     <div class="button-row">
       <p>Already have a Swaptime account?</p>
-      <button md-button>Log in</button>
+      <button md-button (click)="dialogRef.close('login')">Log in</button>
     </div>
   <md-card-content>
 </md-card>

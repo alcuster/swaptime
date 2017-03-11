@@ -10,6 +10,7 @@ import { MaterialModule } from '@angular/material'; //import Angular Material 2
 import { DropdownModule } from 'primeng/primeng';
 import { RadioButtonModule } from 'primeng/primeng';
 import { AutoCompleteModule } from 'primeng/primeng';
+import { MessagesModule } from 'primeng/primeng';
 
 //Responsive UI
 import { ResponsiveModule } from 'ng2-responsive';
@@ -35,6 +36,8 @@ import { AboutComponent } from './about/about.component';
 //Pipes
 import { DisplayNamePipe } from './shared/display-name.pipe';
 import { TruncatePipe } from './shared/truncate.pipe';
+import { ProfilePicPipe } from './shared/profilepic.pipe';
+import { AvatarPipe } from './shared/avatar.pipe';
 
 @NgModule({
   // Components, Pipes, Directive
@@ -52,7 +55,9 @@ import { TruncatePipe } from './shared/truncate.pipe';
     VerifyComponent,
     AboutComponent,
     DisplayNamePipe,
-    TruncatePipe
+    TruncatePipe,
+    ProfilePicPipe,
+    AvatarPipe
   ],
   // Entry Components
   entryComponents: [
@@ -87,6 +92,7 @@ import { TruncatePipe } from './shared/truncate.pipe';
     MomentModule,
     AutoCompleteModule,
     ResponsiveModule,
+    MessagesModule,
     routing
   ],
   // Main Component

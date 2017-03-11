@@ -4,18 +4,23 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from "rxjs";
 import { Meteor } from 'meteor/meteor';
 import { MeteorObservable, ObservableCursor } from "meteor-rxjs";
+import { InjectUser } from 'angular2-meteor-accounts-ui';
+import { MdDialog, MdDialogRef } from '@angular/material';
+import { SelectItem, Messages, Message } from 'primeng/primeng';
 
 import { CourseService } from '../course/course.service';
 import { Listing } from "../../../../both/models/listing.model";
 import { ListingsCollection } from "../../../../both/collections/listings.collection";
 import { Spring2017 } from '../../../../both/collections/spring2017.collection';
 
+import { LoginDialog } from '../auth/logindialog.component';
+import { SignupDialog } from '../auth/signupdialog.component';
+
 import { Departments } from './departments.model';
 import { Days } from './days.model';
 import { Times } from './times.model';
 import { LabDays } from './labdays.model';
 import { LabTimes } from './labtimes.model';
-import { SelectItem } from 'primeng/primeng';
 
 import template from './submit.component.html';
 import style from './submit.component.scss';
@@ -25,8 +30,9 @@ import style from './submit.component.scss';
   template,
   styles: [style]
 })
-
+@InjectUser('user')
 export class SubmitComponent implements OnInit {
+  private msgs: Message[] = [];
   private courses: any; //bad...
   private filteredCourses: any;
   private departments: SelectItem[] = new Departments().departments;
@@ -44,7 +50,8 @@ export class SubmitComponent implements OnInit {
   constructor(private courseService: CourseService,
               private router: Router,
               private formBuilder: FormBuilder,
-              private ngZone: NgZone) { }
+              private ngZone: NgZone,
+              public dialog: MdDialog) { }
 
   ngOnInit(): void {
     this.addForm = this.formBuilder.group({
@@ -60,6 +67,7 @@ export class SubmitComponent implements OnInit {
       description: ''
     });
     this.getCourses();
+    this.msgs.push({severity:'info', summary:'Heads up!', detail:"You'll need to log in before you can submit a listing."});
   }
 
   getCourses(): void {
@@ -144,6 +152,28 @@ export class SubmitComponent implements OnInit {
       });
 
     }
+  }
+
+  openLoginDialog() {
+    let dialogRef = this.dialog.open(LoginDialog);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == 'signup') {
+        this.openSignupDialog();
+      }
+    });
+  }
+
+  openSignupDialog() {
+    let dialogRef = this.dialog.open(SignupDialog);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == 'login') {
+        this.openLoginDialog();
+      }
+    });
+  }
+
+  logout() {
+    Meteor.logout();
   }
 
 }

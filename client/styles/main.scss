@@ -19,8 +19,15 @@ body, html {
 
 .app-content {
   padding: 20px;
-  height: calc(100% - 74px);
+  height: calc(100% - 84px);
   overflow: auto;
+}
+
+@media (max-width: 767px) {
+  .app-content {
+    padding: 0;
+    height: calc(100% - 100px);
+  }
 }
 
 .mat-dialog-container {
@@ -94,6 +101,18 @@ a:focus{
 
 .app-progress {
   margin: 20px;
+}
+
+.avatar-image {
+  width: 36px;
+  height: auto;
+  font-size: 0.78571429rem;
+  margin-right: 0.25em;
+  display: inline-block;
+  -webkit-border-radius: 500rem;
+  -moz-border-radius: 500rem;
+  border-radius: 500rem;
+  vertical-align: middle;
 }
 
 .spinner {
