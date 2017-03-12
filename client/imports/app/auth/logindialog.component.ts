@@ -45,7 +45,7 @@ export class LoginDialog implements OnInit {
   }
 
   loginWithFacebook() {
-    Meteor.loginWithFacebook({ requestPermissions: ['public_profile', 'email'], loginStyle: 'popup' }, (err) => {
+    Meteor.loginWithFacebook({ requestPermissions: ['public_profile', 'email'] }, (err) => {
         this.zone.run(() => {
             if (err) {
                 this.error = err;

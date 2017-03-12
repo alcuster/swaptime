@@ -5,7 +5,7 @@ Meteor.startup(() => {
   ServiceConfiguration.configurations.insert({
     service: "facebook",
     appId: Meteor.settings.private.oAuth.facebook.appId,
-    loginStyle: "popup",
+    loginStyle: "redirect",
     secret: Meteor.settings.private.oAuth.facebook.secret
   });
 });
