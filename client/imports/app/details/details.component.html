@@ -4,6 +4,7 @@
   </button>
   <span>{{listing.type}}: {{ listing.department }} {{ listing.courseNumber }}</span>
 </md-toolbar>
+<mobilenav></mobilenav>
 <div class="app-content">
   <div *ngIf="listing">
     <md-card>
@@ -20,6 +21,5 @@
         <button *ngIf="isOwner(listing)" md-button (click)="deleteListing()" [routerLink]="['/listings']"><md-icon>delete</md-icon>DELETE</button>
       </md-card-actions>
     </md-card>
-
   </div>
 </div>

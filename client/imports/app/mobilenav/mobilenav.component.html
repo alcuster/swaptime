@@ -1,0 +1,13 @@
+<ng-container *ngIf="user">
+  <ng-container *xs>
+    <md-toolbar color="accent">
+      <button md-icon-button [routerLink]="['/listings']"><md-icon class="toolbar-icon">view_list</md-icon></button>
+      <span class="example-spacer"></span>
+      <button md-icon-button [routerLink]="['/mylistings']"><md-icon class="toolbar-icon">account_circle</md-icon></button>
+      <span class="example-spacer"></span>
+      <button md-icon-button [routerLink]="['/submit']"><md-icon class="toolbar-icon">create</md-icon></button>
+      <span class="example-spacer"></span>
+      <button md-icon-button [routerLink]="['/messages']"><md-icon class="toolbar-icon">mail</md-icon></button>
+    </md-toolbar>
+  </ng-container>
+</ng-container>

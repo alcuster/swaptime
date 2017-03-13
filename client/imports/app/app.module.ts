@@ -32,6 +32,7 @@ import { LoginDialog } from './auth/logindialog.component';
 import { SignupDialog } from './auth/signupdialog.component';
 import { VerifyComponent } from './auth/verify.component';
 import { AboutComponent } from './about/about.component';
+import { MobileNavComponent } from './mobilenav/mobilenav.component';
 
 //Pipes
 import { DisplayNamePipe } from './shared/display-name.pipe';
@@ -54,6 +55,7 @@ import { AvatarPipe } from './shared/avatar.pipe';
     SignupDialog,
     VerifyComponent,
     AboutComponent,
+    MobileNavComponent,
     DisplayNamePipe,
     TruncatePipe,
     ProfilePicPipe,
@@ -72,7 +74,8 @@ import { AvatarPipe } from './shared/avatar.pipe';
     LoginDialog,
     SignupDialog,
     VerifyComponent,
-    AboutComponent
+    AboutComponent,
+    MobileNavComponent
   ],
   // Providers
   providers: [

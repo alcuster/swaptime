@@ -4,6 +4,7 @@
     </button>
     <span>Messages</span>
 </md-toolbar>
+<mobilenav></mobilenav>
 <div class="app-content">
   <md-card *ngFor="let chat of chats | async" [routerLink]="['/chat', chat._id]">
     <md-card-subtitle *ngIf="chat.lastMessage">

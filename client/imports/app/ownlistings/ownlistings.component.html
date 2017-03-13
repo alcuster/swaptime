@@ -13,15 +13,7 @@
   </div>
 </md-toolbar>
 
-<md-toolbar *xs color="accent">
-  <button md-icon-button [routerLink]="['/listings']"><md-icon class="toolbar-icon">view_list</md-icon></button>
-  <span class="example-spacer"></span>
-  <button md-icon-button [routerLink]="['/submit']"><md-icon class="toolbar-icon">create</md-icon></button>
-  <span class="example-spacer"></span>
-  <button md-icon-button [routerLink]="['/messages']"><md-icon class="toolbar-icon">mail</md-icon></button>
-  <span class="example-spacer"></span>
-  <button md-icon-button [routerLink]="['/about']"><md-icon class="toolbar-icon">info</md-icon></button>
-</md-toolbar>
+<mobilenav></mobilenav>
 
 <div class="app-content">
   <div *ngIf="user">
