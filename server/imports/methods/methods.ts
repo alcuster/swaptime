@@ -27,12 +27,13 @@ Meteor.methods({
     const newlisting: Listing = Object.assign({},
                                               listing,
                                               {
-                                                owner: this.userId }
+                                                owner: this.userId
+                                              }
                                             );
 
     ListingsCollection.collection.insert(newlisting);
   },
-  addChat(receiverId: string, listing: Listing): void {
+  addChat(receiverId: string, listingId: string): void {
     if (!this.userId) throw new Meteor.Error('unauthorized',
       'User must be logged in to create a new chat.');
 
@@ -47,16 +48,20 @@ Meteor.methods({
     if (receiverId == this.userId) throw new Meteor.Error('illegal-receiver',
       'Receiver must be different than the currently logged in user.');
 
-    const chatExists = !!Chats.collection.find({
-      topic: listing
-    }).count();
+    const chatExists = !!Chats.collection.find(
+      {
+        'topic._id': listingId,
+        memberIds: { $all: [this.userId, receiverId] }
+      }).count();
 
     if (chatExists) throw new Meteor.Error('chat-exists',
       'Chat already exists.');
 
+    const newTopic = ListingsCollection.collection.findOne({_id: listingId});
+
     const chat = {
       memberIds: [this.userId, receiverId],
-      topic: listing,
+      topic: newTopic,
       createdAt: new Date()
     };
 
