@@ -23,5 +23,5 @@ shell-server@0.2.1
 accounts-password
 reywood:publish-composite
 email
-accounts-facebook
+accounts-facebook@1.0.12
 service-configuration
