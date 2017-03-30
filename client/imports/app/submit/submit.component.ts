@@ -8,7 +8,7 @@ import { InjectUser } from 'angular2-meteor-accounts-ui';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { SelectItem, Messages, Message } from 'primeng/primeng';
 
-import { CourseService } from '../course/course.service';
+import { ListingService } from '../listings/listing.service';
 import { Listing } from "../../../../both/models/listing.model";
 import { ListingsCollection } from "../../../../both/collections/listings.collection";
 import { Spring2017 } from '../../../../both/collections/spring2017.collection';
@@ -47,7 +47,7 @@ export class SubmitComponent implements OnInit {
   private errorMessage: string;
   private davidsonLink: string;
 
-  constructor(private courseService: CourseService,
+  constructor(private listingService: ListingService,
               private router: Router,
               private formBuilder: FormBuilder,
               private ngZone: NgZone,

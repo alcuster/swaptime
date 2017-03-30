@@ -16,6 +16,6 @@ export class AvatarPipe implements PipeTransform {
       return user.profile.avatar;
     }
 
-    return 'https://api.adorable.io/avatars/40/abott@adorable.png';
+    return 'https://s3.amazonaws.com/swaptime/default_avatar.png';
   }
 }
