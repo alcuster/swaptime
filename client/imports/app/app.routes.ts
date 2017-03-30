@@ -1,6 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { ListingComponent } from './listing/listing.component';
 import { DetailsComponent } from './details/details.component';
 import { ListingsComponent } from './listings/listings.component';
 import { OwnListingsComponent } from './ownlistings/ownlistings.component';
