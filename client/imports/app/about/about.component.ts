@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import template from './about.component.html';
 import style from './about.component.scss';
-import { SidenavService } from '../services/sidenav.service';
 
 @Component({
   selector: 'about',
@@ -10,9 +9,5 @@ import { SidenavService } from '../services/sidenav.service';
 })
 
 export class AboutComponent {
-  constructor(private sidenavService: SidenavService) {}
-
-  toggle() {
-    this.sidenavService.requestToggle();
-  }
+  constructor() {}
 }
