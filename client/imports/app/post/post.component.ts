@@ -19,7 +19,7 @@ export class PostComponent implements OnInit {
 
   ngOnInit() {
     let owner = Meteor.users.findOne(this.listing.owner);
-    this.ownerName = owner.profile.displayname;
-    this.profilePic = owner.profile.picture;
+    this.ownerName = owner.profile ? owner.profile.displayname : null;
+    this.profilePic = owner.profile ? owner.profile.picture : null;
   }
 }
