@@ -6,7 +6,7 @@ import { Accounts } from 'meteor/accounts-base';
 import { InjectUser } from 'angular2-meteor-accounts-ui';
 import { MdDialog, MdDialogRef } from '@angular/material';
 
-import { CourseService } from '../course/course.service';
+import { ListingService } from '../listings/listing.service';
 import { SidenavService } from '../services/sidenav.service';
 import { ListingsCollection } from '../../../../both/collections/listings.collection';
 import { Listing } from "../../../../both/models/listing.model";
@@ -25,17 +25,23 @@ import style from './listings.component.scss';
 export class ListingsComponent implements OnInit, OnDestroy {
   data: Observable<Listing[]>;
   listingsSub: Subscription;
+  usersSub: Subscription;
 
-  constructor(private courseService : CourseService,
+  constructor(private listingService : ListingService,
               private sidenavService: SidenavService,
               public dialog: MdDialog) { }
 
   ngOnInit() {
-    //this.data = this.courseService.getData().zone();
-    //this.listingsSub = MeteorObservable.subscribe('listings').subscribe();
     if (this.listingsSub) {
       this.listingsSub.unsubscribe();
     }
+
+    if (this.usersSub) {
+      this.usersSub.unsubscribe();
+    }
+
+    this.usersSub = MeteorObservable.subscribe('users').subscribe(() => {});
+
     this.listingsSub = MeteorObservable.subscribe('listings').subscribe(() => {
       this.data = ListingsCollection.find({}, {
         sort: {

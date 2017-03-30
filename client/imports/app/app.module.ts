@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AccountsModule } from 'angular2-meteor-accounts-ui';
 import { MomentModule } from 'angular2-moment';
-import { MaterialModule } from '@angular/material'; //import Angular Material 2
+import { MaterialModule } from '@angular/material';
 
 //PrimeNG UI Components
 import { DropdownModule } from 'primeng/primeng';
@@ -15,18 +15,20 @@ import { MessagesModule } from 'primeng/primeng';
 //Responsive UI
 import { ResponsiveModule } from 'ng2-responsive';
 
+//Routing
 import { routing } from './app.routes';
 
 //My components
 import { AppComponent } from './app.component';
-import { CourseService } from './course/course.service';
+import { ListingService } from './listings/listing.service';
 import { SidenavService } from './services/sidenav.service';
-import { CourseComponent } from './course/course.component';
+
+import { PostComponent } from './post/post.component';
 import { DetailsComponent } from './details/details.component';
 import { ListingsComponent } from './listings/listings.component';
 import { OwnListingsComponent } from './ownlistings/ownlistings.component';
 import { SubmitComponent } from './submit/submit.component';
-import { MessagesPage } from './chat/messages-page.component';
+import { MessagesPage } from './chat/chat.component';
 import { ChatsComponent } from './chats/chats.component';
 import { LoginDialog } from './auth/logindialog.component';
 import { SignupDialog } from './auth/signupdialog.component';
@@ -44,7 +46,6 @@ import { AvatarPipe } from './shared/avatar.pipe';
   // Components, Pipes, Directive
   declarations: [
     AppComponent,
-    CourseComponent,
     DetailsComponent,
     ListingsComponent,
     OwnListingsComponent,
@@ -59,12 +60,12 @@ import { AvatarPipe } from './shared/avatar.pipe';
     DisplayNamePipe,
     TruncatePipe,
     ProfilePicPipe,
-    AvatarPipe
+    AvatarPipe,
+    PostComponent
   ],
   // Entry Components
   entryComponents: [
     AppComponent,
-    CourseComponent,
     DetailsComponent,
     ListingsComponent,
     OwnListingsComponent,
@@ -75,11 +76,12 @@ import { AvatarPipe } from './shared/avatar.pipe';
     SignupDialog,
     VerifyComponent,
     AboutComponent,
-    MobileNavComponent
+    MobileNavComponent,
+    PostComponent
   ],
   // Providers
   providers: [
-    CourseService,
+    ListingService,
     SidenavService
   ],
   // Modules

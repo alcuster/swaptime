@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { MeteorObservable } from 'meteor-rxjs';
 import { InjectUser } from 'angular2-meteor-accounts-ui';
 
-import { CourseService } from '../course/course.service';
+import { ListingService } from '../listings/listing.service';
 import { SidenavService } from '../services/sidenav.service';
 import { ListingsCollection } from '../../../../both/collections/listings.collection';
 import { Listing } from "../../../../both/models/listing.model";
@@ -23,12 +23,12 @@ export class OwnListingsComponent implements OnInit, OnDestroy {
   data: Observable<Listing[]>;
   listingsSub: Subscription;
 
-  constructor(private courseService : CourseService,
+  constructor(private listingService : ListingService,
               private sidenavService: SidenavService,
               private router: Router) { }
 
   ngOnInit() {
-    this.data = this.courseService.getMine(Meteor.userId()).zone();
+    this.data = this.listingService.getMine(Meteor.userId()).zone();
     this.listingsSub = MeteorObservable.subscribe('listings').subscribe();
   }
 

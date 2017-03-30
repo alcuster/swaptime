@@ -7,17 +7,17 @@ import { MeteorObservable } from 'meteor-rxjs';
 
 import 'rxjs/add/operator/map';
 
-import { CourseService } from '../course/course.service';
+import { ListingService } from '../listings/listing.service';
 import { Chat } from '../../../../both/models/chat.model';
 import { Chats } from '../../../../both/collections/chats.collection';
 import { Messages } from '../../../../both/collections/messages.collection';
 import { Message } from '../../../../both/models/message.model';
 
-import template from './messages-page.component.html';
-import style from './messages-page.component.scss';
+import template from './chat.component.html';
+import style from './chat.component.scss';
 
 @Component({
-  selector: 'messages-page',
+  selector: 'chat',
   template,
   styles: [ style ]
 })
@@ -33,13 +33,13 @@ export class MessagesPage implements OnInit, OnDestroy {
   paramsSub: Subscription;
 
   constructor(private route: ActivatedRoute,
-              private courseService: CourseService) {
+              private listingService: ListingService) {
     this.senderId = Meteor.userId();
     this.paramsSub = this.route.params
       .map(params => params['chatId'])
       .subscribe(chatId => {
         let selectedId = chatId;
-        this.selectedChat = this.courseService.getChatFromDB(selectedId);
+        this.selectedChat = this.listingService.getChatFromDB(selectedId);
       });
 
     //stop-gap solution; should just pass in the user name (likely as a route parameter) rather than search again

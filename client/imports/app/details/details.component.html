@@ -10,14 +10,17 @@
     <md-card>
       <md-card-subtitle *ngIf="isOwner(listing)">Once you have completed your trade, please remember to delete this listing.</md-card-subtitle>
       <md-card-title>{{listing.type}}: {{ listing.department }} {{ listing.courseNumber }} {{listing.section}}</md-card-title>
-      <h5>Course title: {{ listing.fullTitle }}</h5>
-      <h5>Time/days: {{ listing.days }} {{ listing.time }}</h5>
-      <h5 *ngIf="listing.labdays">Lab: {{ listing.labdays }} {{ listing.labtime }}</h5>
-      <h5>Listing description:</h5>
+      <p>Posted by {{ownerName}} - {{ listing.createdAt | amCalendar }}</p>
+      <img *ngIf="profilePic" class="avatar-image" style="margin-bottom:20px;" src="{{ profilePic }}">
+      <md-divider></md-divider>
+      <p><b>Course title:</b> {{ listing.fullTitle }}</p>
+      <p><b>Time/days:</b> {{ listing.days }} {{ listing.time }}</p>
+      <p *ngIf="listing.labdays"><b>Lab:</b> {{ listing.labdays }} {{ listing.labtime }}</p>
+      <h4>Description:</h4>
       <p>{{ listing.description }}</p>
       <md-divider></md-divider>
       <md-card-actions>
-        <button *ngIf="!isOwner(listing)" md-button (click)="addChat(listing.owner)"><md-icon>message</md-icon>CONTACT</button>
+        <button *ngIf="!isOwner(listing)" md-button (click)="addChat(listing.owner)"><md-icon>message</md-icon>Message {{ownerName}}</button>
         <button *ngIf="isOwner(listing)" md-button (click)="deleteListing()" [routerLink]="['/listings']"><md-icon>delete</md-icon>DELETE</button>
       </md-card-actions>
     </md-card>

@@ -6,9 +6,10 @@ import { Observable } from 'rxjs';
 import { InjectUser } from 'angular2-meteor-accounts-ui';
 import { Random } from 'meteor/random';
 import { Listing } from "../../../../both/models/listing.model";
-import { CourseService } from '../course/course.service';
+import { ListingService } from '../listings/listing.service';
 import template from './details.component.html';
 import style from './details.component.scss';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-details',
@@ -20,8 +21,10 @@ export class DetailsComponent implements OnInit, OnDestroy {
   listing: Listing;
   sub: any;
   user: Meteor.User;
+  ownerName: String;
+  profilePic: String;
 
-  constructor(private courseService: CourseService,
+  constructor(private listingService: ListingService,
               private route: ActivatedRoute,
               private zone: NgZone,
               private router: Router) {
@@ -31,7 +34,11 @@ export class DetailsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       let id = params['id'];
-      this.listing = this.courseService.getFromDB(id);
+      this.listing = this.listingService.getFromDB(id);
+
+      let owner = Meteor.users.findOne(this.listing.owner);
+      this.ownerName = owner.profile.displayname;
+      this.profilePic = owner.profile.picture;
     });
   }
 
@@ -44,7 +51,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   }
 
   deleteListing() {
-    this.courseService.deleteFromDB(this.listing, this.user);
+    this.listingService.deleteFromDB(this.listing, this.user);
   }
 
   addChat(recipient): void {

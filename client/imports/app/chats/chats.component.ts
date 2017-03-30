@@ -12,7 +12,7 @@ import { TruncatePipe } from '../shared/truncate.pipe';
 import {Chats} from "../../../../both/collections/chats.collection";
 import {Message} from "../../../../both/models/message.model";
 import {Messages} from "../../../../both/collections/messages.collection";
-import {MessagesPage} from '../chat/messages-page.component';
+import {MessagesPage} from '../chat/chat.component';
 
 @Component({
   selector: 'chats',

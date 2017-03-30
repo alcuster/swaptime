@@ -7,9 +7,9 @@ import { ListingsCollection } from "../../../../both/collections/listings.collec
 import { Chats } from '../../../../both/collections/chats.collection';
 
 @Injectable()
-export class CourseService {
+export class ListingService {
   //private data: ObservableCursor<Listing>;
-  private courses: any;
+  private listings: any;
 
   constructor() { }
 

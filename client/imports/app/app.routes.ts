@@ -1,11 +1,11 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { CourseComponent } from './course/course.component';
+import { ListingComponent } from './listing/listing.component';
 import { DetailsComponent } from './details/details.component';
 import { ListingsComponent } from './listings/listings.component';
 import { OwnListingsComponent } from './ownlistings/ownlistings.component';
 import { SubmitComponent } from './submit/submit.component';
-import { MessagesPage } from './chat/messages-page.component';
+import { MessagesPage } from './chat/chat.component';
 import { ChatsComponent } from './chats/chats.component';
 import { VerifyComponent } from './auth/verify.component';
 import { AboutComponent } from './about/about.component';

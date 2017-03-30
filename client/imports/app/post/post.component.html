@@ -2,7 +2,8 @@
   <md-card-subtitle>{{ listing.createdAt | amCalendar }}</md-card-subtitle>
   <md-card-title>{{listing.type}}: {{ listing.department }} {{ listing.courseNumber }} {{ listing.section }}</md-card-title>
   <md-card-content>
-    <h4>{{ listing.ownerName }}</h4>
+    <h4>{{ ownerName }}</h4>
+    <img *ngIf="profilePic" class="avatar-image" src="{{ profilePic }}">
     <p *ngIf="listing.description">{{ listing.description | truncate:20 }}</p>
   </md-card-content>
 </md-card>
