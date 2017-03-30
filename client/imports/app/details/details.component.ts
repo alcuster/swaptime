@@ -37,8 +37,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
       this.listing = this.listingService.getFromDB(id);
 
       let owner = Meteor.users.findOne(this.listing.owner);
-      this.ownerName = owner.profile ? owner.profile.displayname : null;
-      this.profilePic = owner.profile ? owner.profile.picture : null;
+      this.ownerName = owner.profile.displayname ? owner.profile.displayname : "";
+      this.profilePic = owner.profile.picture ? owner.profile.picture : "";
     });
   }
 

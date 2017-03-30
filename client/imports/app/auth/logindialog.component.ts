@@ -35,6 +35,8 @@ export class LoginDialog implements OnInit {
         this.zone.run(() => {
           if (err) {
             this.error = err;
+            console.log(this.error);
+            alert(this.error);
           } else {
             //this.router.navigate(['/listings']);
             this.dialogRef.close();
