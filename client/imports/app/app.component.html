@@ -9,7 +9,7 @@
       <a [routerLink]="['/listings']" md-list-item><md-icon class="sidenav-icon">search</md-icon>All Trades</a>
       <md-divider></md-divider>
 
-      <a [routerLink]="['/submit']" md-list-item><md-icon>add</md-icon> Submit</a>
+      <a [routerLink]="['/submit']" md-list-item><md-icon>create</md-icon> Submit</a>
       <md-divider></md-divider>
 
       <ng-container *ngIf="user">
@@ -18,7 +18,7 @@
         <a [routerLink]="['/messages']" md-list-item><md-icon>mail_outline</md-icon>Messages</a>
         <md-divider></md-divider>
       </ng-container>
-      
+
       <a [routerLink]="['/about']" md-list-item><md-icon>info_outline</md-icon>About</a>
       <md-divider></md-divider>
     </md-nav-list>
