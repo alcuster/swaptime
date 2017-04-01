@@ -10,6 +10,7 @@
     <md-card-subtitle *ngIf="chat.lastMessage">
       <span class="last-message-timestamp">{{chat.lastMessage.createdAt | amCalendar}}</span>
     </md-card-subtitle>
+    <img *ngIf="ownerPhoto" class="avatar-image" src="{{ ownerPhoto }}">
     <div class="chat-info">
       <h2>{{chat.topic.type}}: {{ chat.topic.department }} {{ chat.topic.courseNumber }}</h2>
       <h4>{{chat.title}}</h4>

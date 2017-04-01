@@ -22,7 +22,7 @@ import {MessagesPage} from '../chat/chat.component';
 export class ChatsComponent implements OnInit {
   chats: Observable<Chat[]>;
   senderId: string;
-
+  private ownerPhoto: string;
   constructor() {
 
   }
@@ -48,6 +48,7 @@ export class ChatsComponent implements OnInit {
                     if (messages) chat.lastMessage = messages[0];
                     const receiver = Meteor.users.findOne(chat.memberIds.find(memberId => memberId !== this.senderId))
                     chat.title = receiver.profile.displayname;
+                    this.ownerPhoto = receiver.profile.picture || "";
                     return chat;
                   })
 
