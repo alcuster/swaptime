@@ -9,7 +9,7 @@
   <div *ngIf="listing">
     <md-card>
       <md-card-subtitle *ngIf="isOwner(listing)">Once you have completed your trade, please remember to delete this listing.</md-card-subtitle>
-      <md-card-title>{{listing.type}}: {{ listing.department }} {{ listing.courseNumber }} {{listing.section}}</md-card-title>
+      <md-card-title>{{listing.type}}: {{ listing.department }} {{ listing.courseNumber }} {{listing.section}} - {{listing.fullTitle}}</md-card-title>
       <span *ngIf="ownerName">Posted by {{ownerName}} - </span><span> {{ listing.createdAt | amCalendar }}</span><br />
       <img *ngIf="profilePic" class="avatar-image" style="margin-bottom:20px; margin-top:20px;" src="{{ profilePic }}">
       <md-divider></md-divider>

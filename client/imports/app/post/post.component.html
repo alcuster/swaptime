@@ -1,6 +1,6 @@
 <md-card [routerLink]="['/details', listing._id]">
   <md-card-subtitle>{{ listing.createdAt | amCalendar }}</md-card-subtitle>
-  <md-card-title>{{listing.type}}: {{ listing.department }} {{ listing.courseNumber }} {{ listing.section }}</md-card-title>
+  <md-card-title>{{listing.type}}: {{ listing.department }} {{ listing.courseNumber }} {{ listing.section }} - {{listing.fullTitle}}</md-card-title>
   <md-card-content>
     <h4 *ngIf="ownerName">{{ ownerName }}</h4>
     <img *ngIf="profilePic" class="avatar-image" src="{{ profilePic }}">
