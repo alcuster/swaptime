@@ -45,7 +45,7 @@ export class MessagesPage implements OnInit, OnDestroy {
     //stop-gap solution; should just pass in the user name (likely as a route parameter) rather than search again
     const receiver = Meteor.users.findOne(this.selectedChat.memberIds.find(memberId => memberId !== this.senderId));
     const topic = this.selectedChat.topic;
-    this.title = receiver.profile.displayname + ' - "' + topic.type + ": " + topic.department + " " + topic.courseNumber + '"';
+    this.title = receiver.profile.displayname;
 
   }
 
