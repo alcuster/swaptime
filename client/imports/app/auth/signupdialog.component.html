@@ -1,4 +1,4 @@
-<md-card>
+<md-card style="max-width:500px;">
   <md-toolbar style="background-color:#fff; padding: 0; margin: 0; max-height:16px; min-height:16px;" *xs>
     <span class="example-spacer"></span>
     <button md-dialog-close md-icon-button tabindex="-1" style="left: 10px; bottom:30px;"><md-icon style="padding: 0;">close</md-icon></button>
@@ -8,6 +8,10 @@
       <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
       &nbsp; Sign up with Facebook
     </button>
+
+    <p>Signing up with Facebook lets your classmates recognize you online.</p>
+    <p>You'll still need a davidson.edu email to make posts or contact other users.</p>
+    <a href="javascript:void(0)" (click)="dialogRef.close('about')">Learn more.</a>
 
     <div class="signup-or-separator">
       <span class="h6 signup-or-separator--text">or</span>
