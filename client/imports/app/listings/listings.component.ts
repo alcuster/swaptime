@@ -5,6 +5,7 @@ import { MeteorObservable, ObservableCursor } from 'meteor-rxjs';
 import { Accounts } from 'meteor/accounts-base';
 import { InjectUser } from 'angular2-meteor-accounts-ui';
 import { MdDialog, MdDialogRef } from '@angular/material';
+import {Router} from '@angular/router';
 
 import { ListingService } from '../listings/listing.service';
 import { SidenavService } from '../services/sidenav.service';
@@ -27,7 +28,8 @@ export class ListingsComponent implements OnInit, OnDestroy {
   listingsSub: Subscription;
   usersSub: Subscription;
 
-  constructor(private listingService : ListingService,
+  constructor(private router: Router,
+              private listingService : ListingService,
               private sidenavService: SidenavService,
               public dialog: MdDialog) { }
 
@@ -67,7 +69,7 @@ export class ListingsComponent implements OnInit, OnDestroy {
         return;
       } else {
         let email = Meteor.user().emails[ 0 ].address;
-        alert( `Verification sent to ${ email }!`);
+        alert(`Verification sent to ${ email }!`);
         return;
       }
     });
@@ -76,6 +78,9 @@ export class ListingsComponent implements OnInit, OnDestroy {
   openLoginDialog() {
     let dialogRef = this.dialog.open(LoginDialog);
     dialogRef.afterClosed().subscribe(result => {
+      if (result == 'about') {
+        this.router.navigate(['/about']);
+      }
       if (result == 'signup') {
         this.openSignupDialog();
       }
@@ -85,6 +90,9 @@ export class ListingsComponent implements OnInit, OnDestroy {
   openSignupDialog() {
     let dialogRef = this.dialog.open(SignupDialog);
     dialogRef.afterClosed().subscribe(result => {
+      if (result == 'about') {
+        this.router.navigate(['/about']);
+      }
       if (result == 'login') {
         this.openLoginDialog();
       }
