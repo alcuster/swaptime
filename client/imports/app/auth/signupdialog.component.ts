@@ -44,7 +44,26 @@ export class SignupDialog implements OnInit {
         if (err) {
           this.error = err;
         } else {
+            Meteor.call('sendVerificationLink', (err, response) => {
+              this.zone.run(() => {
+                if (err) {
+                  this.error = err;
+                } else {
+                  //this.router.navigate(['/listings']);
+                  this.dialogRef.close();
+                }
+              });
+            });
+          }
+      });
+    }
+  }
 
+  loginWithFacebook() {
+    Meteor.loginWithFacebook({ requestPermissions: ['public_profile', 'email'], loginStyle: 'popup' }, (err) => {
+      if (err) {
+          this.error = err;
+      } else {
           Meteor.call('sendVerificationLink', (err, response) => {
             this.zone.run(() => {
               if (err) {
@@ -55,22 +74,7 @@ export class SignupDialog implements OnInit {
               }
             });
           });
-
-        }
-      });
-    }
-  }
-
-  loginWithFacebook() {
-    Meteor.loginWithFacebook({ requestPermissions: ['public_profile', 'email'], loginStyle: 'popup' }, (err) => {
-        this.zone.run(() => {
-            if (err) {
-                this.error = err;
-            } else {
-              //this.router.navigate(['/listings']);
-              this.dialogRef.close();
-            }
-        });
+      }
     });
   }
 }
