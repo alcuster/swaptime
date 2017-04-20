@@ -43,11 +43,13 @@ export class SignupDialog implements OnInit {
       Accounts.createUser(options, (err) => {
         if (err) {
           this.error = err;
+          console.error(this.error);
         } else {
             Meteor.call('sendVerificationLink', (err, response) => {
               this.zone.run(() => {
                 if (err) {
                   this.error = err;
+                  console.error(this.error);
                 } else {
                   //this.router.navigate(['/listings']);
                   this.dialogRef.close();
