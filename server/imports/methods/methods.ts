@@ -21,7 +21,7 @@ Meteor.methods({
     const unverified = Meteor.users.findOne({_id: this.userId, 'emails.0.verified': false});
 
     if (unverified) throw new Meteor.Error('unauthorized',
-      'User must verify email before submitting a listing.'
+      'You need to verify your email before you can submit a listing.'
     );
 
     const newlisting: Listing = Object.assign({},
