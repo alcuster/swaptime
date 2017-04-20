@@ -149,6 +149,7 @@ export class SubmitComponent implements OnInit {
         this.router.navigate(link);
       }, (error) => {
         console.error('Error: ', error);
+        alert(error.reason);
       });
 
     }
