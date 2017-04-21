@@ -11,7 +11,7 @@
 
     <p>Signing up with Facebook lets your classmates recognize you online.</p>
     <p>You'll still need a davidson.edu email to make posts or contact other users.</p>
-    <a routerLink="/about" (click)="dialogRef.close('about')">Learn more.</a>
+    <a routerLink="/about" (click)="dialogRef.close()">Learn more.</a>
 
     <div class="signup-or-separator">
       <span class="h6 signup-or-separator--text">or</span>
@@ -25,10 +25,6 @@
 
       <md-input-container style="width:100%;">
         <input mdInput formControlName="password" type="password" placeholder="Password"></input>
-      </md-input-container>
-
-      <md-input-container style="width:100%;">
-        <input mdInput formControlName="displayname" placeholder="Username"></input>
       </md-input-container>
 
       <div layout="row" layout-align="space-between center">

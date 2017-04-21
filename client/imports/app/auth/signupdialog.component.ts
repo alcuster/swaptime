@@ -7,6 +7,9 @@ import {Meteor} from 'meteor/meteor';
 import template from './signupdialog.component.html';
 import style from './signupdialog.component.scss';
 
+import animals from './animals.min';
+import adjectives from './adjectives.min';
+
 @Component({
   selector: 'signup-dialog',
   template: template,
@@ -17,6 +20,9 @@ export class SignupDialog implements OnInit {
   signupForm: FormGroup;
   error: string;
 
+  private adjectives: string[] = adjectives;
+  private animals: string[] = animals;
+
   constructor(private router: Router,
               private zone: NgZone,
               private formBuilder: FormBuilder,
@@ -24,8 +30,7 @@ export class SignupDialog implements OnInit {
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
       email: ['', Validators.required],
-      password: ['', Validators.required],
-      displayname: ['', Validators.required]
+      password: ['', Validators.required]
     });
 
     this.error = '';
@@ -37,7 +42,7 @@ export class SignupDialog implements OnInit {
         email: this.signupForm.value.email,
         password: this.signupForm.value.password,
         profile: {
-          displayname: this.signupForm.value.displayname
+          displayname: this.randomElem(this.adjectives) + this.randomElem(this.animals)
         }
       }
       Accounts.createUser(options, (err) => {
@@ -51,8 +56,7 @@ export class SignupDialog implements OnInit {
                   this.error = err;
                   console.error(this.error);
                 } else {
-                  //this.router.navigate(['/listings']);
-                  this.dialogRef.close();
+                  this.dialogRef.close('signupSuccess');
                 }
               });
             });
@@ -71,12 +75,16 @@ export class SignupDialog implements OnInit {
               if (err) {
                 this.error = err;
               } else {
-                //this.router.navigate(['/listings']);
-                this.dialogRef.close();
+                this.dialogRef.close('signupSuccess');
               }
             });
           });
       }
     });
+  }
+
+  randomElem(list) {
+    var randomEl = list[Math.floor(Math.random() * list.length)];
+    return randomEl;
   }
 }
