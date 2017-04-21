@@ -53,7 +53,7 @@ export class LoginDialog implements OnInit {
                 this.error = err;
             } else {
               //this.router.navigate(['/listings']);
-              this.dialogRef.close('loginSuccess');
+              this.dialogRef.close();
             }
         });
     });

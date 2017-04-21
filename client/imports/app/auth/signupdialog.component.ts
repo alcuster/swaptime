@@ -75,7 +75,7 @@ export class SignupDialog implements OnInit {
               if (err) {
                 this.error = err;
               } else {
-                this.dialogRef.close('signupSuccess');
+                this.dialogRef.close();
               }
             });
           });
