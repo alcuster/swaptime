@@ -67,7 +67,8 @@ export class ListingsComponent implements OnInit, OnDestroy {
       if ( error ) {
         alert(error);
         return;
-      } else {
+      }
+      else {
         let email = Meteor.user().emails[ 0 ].address;
         alert(`Verification sent to ${ email }!`);
         return;
@@ -78,8 +79,8 @@ export class ListingsComponent implements OnInit, OnDestroy {
   openLoginDialog() {
     let dialogRef = this.dialog.open(LoginDialog);
     dialogRef.afterClosed().subscribe(result => {
-      if (result == 'about') {
-        this.router.navigate(['/about']);
+      if (result == 'loginSuccess') {
+        window.location.reload();
       }
       if (result == 'signup') {
         this.openSignupDialog();
@@ -90,8 +91,8 @@ export class ListingsComponent implements OnInit, OnDestroy {
   openSignupDialog() {
     let dialogRef = this.dialog.open(SignupDialog);
     dialogRef.afterClosed().subscribe(result => {
-      if (result == 'about') {
-        this.router.navigate(['/about']);
+      if (result == 'signupSuccess') {
+        window.location.reload();
       }
       if (result == 'login') {
         this.openLoginDialog();

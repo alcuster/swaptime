@@ -158,6 +158,9 @@ export class SubmitComponent implements OnInit {
   openLoginDialog() {
     let dialogRef = this.dialog.open(LoginDialog);
     dialogRef.afterClosed().subscribe(result => {
+      if (result == 'loginSuccess') {
+        window.location.reload();
+      }
       if (result == 'signup') {
         this.openSignupDialog();
       }
@@ -167,6 +170,9 @@ export class SubmitComponent implements OnInit {
   openSignupDialog() {
     let dialogRef = this.dialog.open(SignupDialog);
     dialogRef.afterClosed().subscribe(result => {
+      if (result == 'signupSuccess') {
+        window.location.reload();
+      }
       if (result == 'login') {
         this.openLoginDialog();
       }
