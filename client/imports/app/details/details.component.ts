@@ -27,9 +27,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   constructor(private listingService: ListingService,
               private route: ActivatedRoute,
               private zone: NgZone,
-              private router: Router) {
-
-  }
+              private router: Router) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -73,6 +71,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
   private handleError(e: Error): void {
     console.error(e);
+    alert(e);
   }
 
 }
