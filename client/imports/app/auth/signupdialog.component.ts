@@ -48,13 +48,13 @@ export class SignupDialog implements OnInit {
       Accounts.createUser(options, (err) => {
         if (err) {
           this.error = err;
-          console.error(this.error);
+          console.error('Signup error: ', this.error);
         } else {
             Meteor.call('sendVerificationLink', (err, response) => {
               this.zone.run(() => {
                 if (err) {
                   this.error = err;
-                  console.error(this.error);
+                  console.error('Email error:', this.error);
                 } else {
                   this.dialogRef.close('signupSuccess');
                 }
@@ -65,8 +65,8 @@ export class SignupDialog implements OnInit {
     }
   }
 
-  loginWithFacebook() {
-    Meteor.loginWithFacebook({ requestPermissions: ['public_profile', 'email'], loginStyle: 'popup' }, (err) => {
+  signupWithFacebook() {
+    Meteor.loginWithFacebook({ requestPermissions: ['public_profile', 'email'] }, (err) => {
       if (err) {
           this.error = err;
       } else {
