@@ -1,14 +1,13 @@
 import { Component, OnInit, NgZone} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MdDialogRef } from '@angular/material';
-import {Router} from '@angular/router';
-import {Meteor} from 'meteor/meteor';
+import { Router } from '@angular/router';
+import { Meteor } from 'meteor/meteor';
 
 import template from './signupdialog.component.html';
 import style from './signupdialog.component.scss';
 
 import animals from './animals.min';
-import adjectives from './adjectives.min';
 
 @Component({
   selector: 'signup-dialog',
@@ -20,13 +19,13 @@ export class SignupDialog implements OnInit {
   signupForm: FormGroup;
   error: string;
 
-  private adjectives: string[] = adjectives;
   private animals: string[] = animals;
 
   constructor(private router: Router,
               private zone: NgZone,
               private formBuilder: FormBuilder,
               public dialogRef: MdDialogRef<SignupDialog>) {}
+
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
       email: ['', Validators.required],
@@ -42,7 +41,7 @@ export class SignupDialog implements OnInit {
         email: this.signupForm.value.email,
         password: this.signupForm.value.password,
         profile: {
-          displayname: this.randomElem(this.adjectives) + this.randomElem(this.animals)
+          displayname: 'Anonymous' + this.randomElem(this.animals)
         }
       }
       Accounts.createUser(options, (err) => {
