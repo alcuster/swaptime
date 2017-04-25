@@ -14,4 +14,10 @@ Meteor.startup(() => {
   //Set SMTP URL (defined in ./settings.json)
   //process.env.MAIL_URL = Meteor.settings.smtp;
 
+  //Naive solution for restricting emails to '@davidson.edu'; ignores the
+  //fact that many Facebook users don't tie their school account to FB.
+
+  // Accounts.config({
+  //   restrictCreationByEmailDomain: 'davidson.edu'
+  // });
 });

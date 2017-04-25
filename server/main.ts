@@ -9,6 +9,7 @@ import './imports/publications/listings.publication';
 import './imports/publications/spring2017.publication';
 import './service-config.js';
 import './on-create-user.js';
+import './validate-new-user.js';
 
 // declare var process:any;
 // const mainInstance = new Main();
