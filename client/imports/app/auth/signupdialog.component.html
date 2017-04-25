@@ -27,17 +27,17 @@
         <input mdInput formControlName="password" type="password" placeholder="Password"></input>
       </md-input-container>
 
+      <div [hidden]="!msgs" style="max-width:800px; padding-left:20px; padding-right:20px;">
+        <p-messages [value]="msgs"></p-messages>
+      </div>
+
       <div layout="row" layout-align="space-between center">
         <button (click)="signup()" md-raised-button color="primary" class="login-button" type="submit" aria-label="login">Sign up</button>
       </div>
 
     </form>
 
-    <div [hidden]="error == ''">
-      <md-toolbar class="md-warn" layout="row" layout-fill layout-padding layout-margin>
-        <p class="md-body-1">{{ error }}</p>
-      </md-toolbar>
-    </div>
+
     <md-divider></md-divider>
     <div class="button-row">
       <p>Already have a Swaptime account?</p>

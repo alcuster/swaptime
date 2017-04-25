@@ -1,8 +1,9 @@
 import { Component, OnInit, NgZone} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MdDialogRef } from '@angular/material';
-import {Router} from '@angular/router';
-import {Meteor} from 'meteor/meteor';
+import { Router } from '@angular/router';
+import { Meteor } from 'meteor/meteor';
+import { Messages, Message } from 'primeng/primeng';
 
 import template from './logindialog.component.html';
 import style from './logindialog.component.scss';
@@ -13,6 +14,7 @@ import style from './logindialog.component.scss';
   styles: [style]
 })
 export class LoginDialog implements OnInit {
+  private msgs: Message[] = [];
   private loginForm: FormGroup;
   error: string;
 
@@ -35,8 +37,8 @@ export class LoginDialog implements OnInit {
         this.zone.run(() => {
           if (err) {
             this.error = err;
-            console.error(this.error);
-            alert(this.error);
+            console.error('Login error', this.error);
+            this.msgs.push({severity:'error', detail:err});
           } else {
             //this.router.navigate(['/listings']);
             this.dialogRef.close('loginSuccess');
@@ -51,6 +53,8 @@ export class LoginDialog implements OnInit {
         this.zone.run(() => {
             if (err) {
                 this.error = err;
+                console.error('Facebook login error', this.error);
+                this.msgs.push({severity:'error', detail:err});
             } else {
               //this.router.navigate(['/listings']);
               this.dialogRef.close();

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MdDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
 import { Meteor } from 'meteor/meteor';
+import { Messages, Message } from 'primeng/primeng';
 
 import template from './signupdialog.component.html';
 import style from './signupdialog.component.scss';
@@ -15,8 +16,9 @@ import animals from './animals.min';
   styles: [style]
 })
 export class SignupDialog implements OnInit {
+  private msgs: Message[] = [];
   user: Meteor.User;
-  signupForm: FormGroup;
+  private signupForm: FormGroup;
   error: string;
 
   private animals: string[] = animals;
@@ -32,7 +34,8 @@ export class SignupDialog implements OnInit {
       password: ['', Validators.required]
     });
 
-    this.error = '';
+    //this.error = '';
+
   }
 
   signup() {
@@ -44,23 +47,29 @@ export class SignupDialog implements OnInit {
           displayname: 'Anonymous' + this.randomElem(this.animals)
         }
       }
+
       Accounts.createUser(options, (err) => {
-        if (err) {
-          this.error = err;
-          console.error('Signup error: ', this.error);
-        } else {
-            Meteor.call('sendVerificationLink', (err, response) => {
-              this.zone.run(() => {
-                if (err) {
-                  this.error = err;
-                  console.error('Email error:', this.error);
-                } else {
-                  this.dialogRef.close('signupSuccess');
-                }
+        this.zone.run(() => {
+          if (err) {
+            this.error = err;
+            this.msgs.push({severity:'error', detail:err});
+            console.error('Signup error: ', this.error);
+          } else {
+              Meteor.call('sendVerificationLink', (err, response) => {
+                this.zone.run(() => {
+                  if (err) {
+                    this.error = err;
+                    this.msgs.push({severity:'error', detail:err});
+                    console.error('Email error:', this.error);
+                  } else {
+                    this.dialogRef.close('signupSuccess');
+                  }
+                });
               });
-            });
-          }
+            }
+          });
       });
+
     }
   }
 
@@ -73,6 +82,8 @@ export class SignupDialog implements OnInit {
             this.zone.run(() => {
               if (err) {
                 this.error = err;
+                this.msgs.push({severity:'error', detail:err});
+                console.error('Facebook error:', this.error);
               } else {
                 this.dialogRef.close();
               }

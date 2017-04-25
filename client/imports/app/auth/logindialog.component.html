@@ -26,6 +26,10 @@
         <input mdInput formControlName="password" type="password" placeholder="Password"></input>
       </md-input-container>
 
+      <div [hidden]="!msgs" style="max-width:800px; padding-left:20px; padding-right:20px;">
+        <p-messages [value]="msgs"></p-messages>
+      </div>
+
       <div layout="row" layout-align="space-between center">
         <button (click)="login()" md-raised-button color="primary" class="login-button" type="submit" aria-label="login">Log in</button>
       </div>
